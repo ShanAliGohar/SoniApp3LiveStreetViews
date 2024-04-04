@@ -1,0 +1,428 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg"
+    xmlns:mapbox="http://schemas.android.com/apk/res-auto"
+    tools:context=".activities.TESTActivity">
+
+    <View
+        android:id="@+id/whiteView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:elevation="@dimen/_9sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/textView74"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Distance Calculator"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_15sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/arrowBackDistance"
+        android:layout_width="@dimen/_20sdp"
+        android:layout_height="@dimen/_20sdp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView74"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView74"
+        app:srcCompat="@drawable/arrowhite" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout28"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/bg_home"
+        app:layout_constraintBottom_toTopOf="@+id/bannerID"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView74">
+
+        <org.osmdroid.views.MapView
+            android:id="@+id/AreaDistance"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0"
+            />
+
+
+        <ImageView
+            android:id="@+id/imageView33"
+            android:layout_width="0dp"
+            android:layout_height="120dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="32dp"
+            android:src="@drawable/areacir"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/imageView34"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/textDistnceMeter"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="10dp"
+            android:ellipsize="marquee"
+            android:gravity="center"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:singleLine="true"
+            android:textColor="@color/white"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView33"
+            app:layout_constraintEnd_toEndOf="@+id/imageView33"
+            app:layout_constraintStart_toStartOf="@+id/imageView33"
+            app:layout_constraintTop_toTopOf="@+id/imageView33" />
+
+
+        <ImageView
+            android:id="@+id/imageView34"
+            android:layout_width="0dp"
+            android:layout_height="120dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="32dp"
+            android:src="@drawable/areacir"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView33"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageView33" />
+
+        <TextView
+            android:id="@+id/line_length_textView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="10dp"
+            android:ellipsize="marquee"
+            android:gravity="center"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:singleLine="true"
+            android:textColor="@color/white"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView34"
+            app:layout_constraintEnd_toEndOf="@+id/imageView34"
+            app:layout_constraintStart_toStartOf="@+id/imageView34"
+            app:layout_constraintTop_toTopOf="@+id/imageView34" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="@dimen/_60sdp"
+        android:layout_height="200dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <View
+            android:id="@+id/viewClearAllDistance"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bg_ccc"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/eraser"
+            app:layout_constraintBottom_toBottomOf="@+id/viewClearAllDistance"
+            app:layout_constraintEnd_toEndOf="@+id/viewClearAllDistance"
+            app:layout_constraintStart_toStartOf="@+id/viewClearAllDistance"
+            app:layout_constraintTop_toTopOf="@+id/viewClearAllDistance" />
+
+        <View
+            android:id="@+id/DistanceClearOne"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bg_ccc"
+            app:layout_constraintEnd_toEndOf="@+id/viewClearAllDistance"
+            app:layout_constraintStart_toStartOf="@+id/viewClearAllDistance"
+            app:layout_constraintTop_toBottomOf="@+id/viewClearAllDistance" />
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/undo"
+            app:layout_constraintBottom_toBottomOf="@+id/DistanceClearOne"
+            app:layout_constraintEnd_toEndOf="@+id/DistanceClearOne"
+            app:layout_constraintStart_toStartOf="@+id/DistanceClearOne"
+            app:layout_constraintTop_toTopOf="@+id/DistanceClearOne" />
+
+        <View
+            android:id="@+id/CurrentLocDist"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bg_ccc"
+            app:layout_constraintEnd_toEndOf="@+id/DistanceClearOne"
+            app:layout_constraintStart_toStartOf="@+id/DistanceClearOne"
+            app:layout_constraintTop_toBottomOf="@+id/DistanceClearOne" />
+
+        <ImageView
+            android:id="@+id/imageView28"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/current_location"
+            app:layout_constraintBottom_toBottomOf="@+id/CurrentLocDist"
+            app:layout_constraintEnd_toEndOf="@+id/CurrentLocDist"
+            app:layout_constraintStart_toStartOf="@+id/CurrentLocDist"
+            app:layout_constraintTop_toTopOf="@+id/CurrentLocDist" />
+
+      <!--  <View
+            android:id="@+id/viewMapStyleDistance"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="8dp"
+            android:visibility="gone"
+            android:background="@drawable/bg_ccc"
+            app:layout_constraintEnd_toEndOf="@+id/CurrentLocDist"
+            app:layout_constraintStart_toStartOf="@+id/CurrentLocDist"
+            app:layout_constraintTop_toBottomOf="@+id/CurrentLocDist" />
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/map_style"
+            app:layout_constraintBottom_toBottomOf="@+id/viewMapStyleDistance"
+            app:layout_constraintEnd_toEndOf="@+id/viewMapStyleDistance"
+            app:layout_constraintStart_toStartOf="@+id/viewMapStyleDistance"
+            app:layout_constraintTop_toTopOf="@+id/viewMapStyleDistance" />-->
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/ConDistanceLayout"
+        android:layout_width="140dp"
+        android:layout_height="150dp"
+        android:visibility="gone"
+        android:background="@drawable/gps_style"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/arrowBackDistance">
+
+        <ImageView
+            android:id="@+id/imageSetallite"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/settta"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/view30"
+            android:layout_width="0dp"
+            android:layout_height="15dp"
+            android:alpha="0.3"
+            android:background="@color/black"
+            app:layout_constraintBottom_toBottomOf="@+id/imageSetallite"
+            app:layout_constraintEnd_toEndOf="@+id/imageSetallite"
+            app:layout_constraintStart_toStartOf="@+id/imageSetallite"
+            app:layout_constraintTop_toTopOf="@+id/imageSetallite" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Setallite"
+            android:textColor="@color/white"
+            android:textSize="9sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/view30"
+            app:layout_constraintEnd_toEndOf="@+id/imageSetallite"
+            app:layout_constraintStart_toStartOf="@+id/imageSetallite"
+            app:layout_constraintTop_toTopOf="@+id/view30" />
+
+        <ImageView
+            android:id="@+id/imageSetalliteStreet"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="5dp"
+            android:src="@drawable/terain"
+            app:layout_constraintStart_toEndOf="@+id/imageSetallite"
+            app:layout_constraintTop_toTopOf="@+id/imageSetallite" />
+
+        <View
+            android:id="@+id/view31"
+            android:layout_width="0dp"
+            android:layout_height="15dp"
+            android:alpha="0.3"
+            android:background="@color/black"
+            app:layout_constraintBottom_toBottomOf="@+id/imageSetalliteStreet"
+            app:layout_constraintEnd_toEndOf="@+id/imageSetalliteStreet"
+            app:layout_constraintStart_toStartOf="@+id/imageSetalliteStreet"
+            app:layout_constraintTop_toTopOf="@+id/imageSetalliteStreet" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Setalite Street"
+            android:textSize="8sp"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/view31"
+            app:layout_constraintEnd_toEndOf="@+id/imageSetalliteStreet"
+            app:layout_constraintStart_toStartOf="@+id/imageSetalliteStreet"
+            app:layout_constraintTop_toTopOf="@+id/view31" />
+
+        <ImageView
+            android:id="@+id/imageDedaultDistance"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/def"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/imageSetallite"
+            app:layout_constraintTop_toBottomOf="@+id/imageSetallite" />
+
+        <View
+            android:id="@+id/view32"
+            android:layout_width="0dp"
+            android:layout_height="15dp"
+            android:alpha="0.3"
+            android:background="@color/black"
+            app:layout_constraintBottom_toBottomOf="@+id/imageDedaultDistance"
+            app:layout_constraintEnd_toEndOf="@+id/imageDedaultDistance"
+            app:layout_constraintStart_toStartOf="@+id/imageDedaultDistance"
+            app:layout_constraintTop_toTopOf="@+id/imageDedaultDistance" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Default"
+            android:textSize="8sp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="@+id/view32"
+            app:layout_constraintEnd_toEndOf="@+id/imageDedaultDistance"
+            app:layout_constraintStart_toStartOf="@+id/imageDedaultDistance"
+            app:layout_constraintTop_toTopOf="@+id/view32" />
+
+        <ImageView
+            android:id="@+id/imageDistanceNight"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="5dp"
+            android:src="@drawable/night"
+            app:layout_constraintStart_toEndOf="@+id/imageDedaultDistance"
+            app:layout_constraintTop_toTopOf="@+id/imageDedaultDistance" />
+
+        <View
+            android:id="@+id/view33"
+            android:layout_width="0dp"
+            android:layout_height="15dp"
+            android:alpha="0.3"
+            android:background="@color/black"
+            app:layout_constraintBottom_toBottomOf="@+id/imageDistanceNight"
+            app:layout_constraintEnd_toEndOf="@+id/imageDistanceNight"
+            app:layout_constraintStart_toStartOf="@+id/imageDistanceNight"
+            app:layout_constraintTop_toTopOf="@+id/imageDistanceNight" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Night"
+            android:textStyle="bold"
+            android:textSize="9sp"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="@+id/view33"
+            app:layout_constraintEnd_toEndOf="@+id/imageDistanceNight"
+            app:layout_constraintStart_toStartOf="@+id/imageDistanceNight"
+            app:layout_constraintTop_toTopOf="@+id/view33" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_2sdp"
+        app:layout_constraintBottom_toTopOf="@+id/bannerID" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/bannerID"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <include
+            android:id="@+id/bannerAdPlace"
+            layout="@layout/street_view_my_bannar_small"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
+
+
+        <!--<com.mapbox.mapboxsdk.maps.MapView
+            android:id="@+id/mapView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView73"
+            mapbox:mapbox_cameraTargetLat="21.3011229"
+            mapbox:mapbox_cameraTargetLng="-157.851376"
+            mapbox:mapbox_cameraZoom="12" />-->
+
+
+
+       <!-- <ImageView
+            android:id="@+id/imageView27"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView73"
+            app:layout_constraintTop_toTopOf="parent"
+            mapbox:layout_constraintStart_toStartOf="parent"
+            mapbox:srcCompat="@drawable/arrowhite" />-->
+
+
+
+
+  <!--  <androidx.cardview.widget.CardView
+        android:id="@+id/cardView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|center"
+        android:layout_marginTop="8dp">
+
+        <TextView
+            android:id="@+id/line_length_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:text="line_distance_textview" />
+
+    </androidx.cardview.widget.CardView>-->
+</androidx.constraintlayout.widget.ConstraintLayout>

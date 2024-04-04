@@ -1,0 +1,86 @@
+<resources>
+    <string name="app_name">Live Street View</string>
+    <string-array name="dis">
+        <item>Km</item>
+        <item>Mile</item>
+    </string-array>
+
+    <string-array name="mil">
+        <item>Km n/Ltr</item>
+        <item></item>
+    </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="todo">toDO</string>
+    <string name="rate_app">https://play.google.com/store/apps/details?id=com.live.streetview.navigation.earthmap.compass.map</string>
+
+    <!--
+        // test Ids
+    -->
+
+
+    <!--<string name="admob_ad_id">ca-app-pub-3940256099942544~3347511713</string>
+    <string name="admob_banner_id" translatable="false">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="admob_collaspable_banner_id" translatable="false">ca-app-pub-3940256099942544/2014213617</string>
+    <string name="admob_banner_id_medium" translatable="false">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="admob_interstitial_id" translatable="false">ca-app-pub-3940256099942544/1033173712</string>
+    <string name="admob_interstitial_id_high" translatable="false">ca-app-pub-3940256099942544/1033173712</string>
+    <string name="rewarded_ad_id_admob" translatable="false">ca-app-pub-3940256099942544/5224354927</string>
+    <string name="splash_admob_interstitial_id" translatable="false">ca-app-pub-3940256099942544/1033173712</string>
+    <string name="splash_admob_appOpen_id" translatable="false">ca-app-pub-3940256099942544/3419835294</string>
+    <string name="splash_admob_appOpen_id_high" translatable="false">ca-app-pub-3940256099942544/3419835294</string>
+    <string name="admob_native_id" translatable="false">ca-app-pub-3940256099942544/2247696110</string>
+    <string name="admob_oboarding_native_id" translatable="false">ca-app-pub-3940256099942544/2247696110</string>
+    <string name="app_open_ad_id_admob">ca-app-pub-3940256099942544/3419835294</string>
+    <string name="max_ad_id" translatable="false">cPHGg3slxMcxnbNqaRx9KZxhzK7y4-sLZDd676qTcq_p4BOAT7kt2FzUcSSxeobys_sNHTsyITov9ITB8hBlf7</string>
+    <string name="max_banner_id" translatable="false">your_test_ids</string>
+    <string name="max_interstitial_id" translatable="false">your_test_ids</string>
+    <string name="max_native_id" translatable="false">your_test_ids</string>-->
+
+
+    <!--
+      real Ids
+-->
+    <string name="admob_banner_id" translatable="false">ca-app-pub-5830742138865009/3353919474</string>
+    <string name="admob_banner_id_medium" translatable="false">ca-app-pub-5830742138865009/8951352432</string>
+    <string name="admob_collaspable_banner_id" translatable="false"> ca-app-pub-5830742138865009/1754561026</string>
+    <string name="admob_interstitial_id" translatable="false">ca-app-pub-5830742138865009/2790565626</string>
+    <string name="rewarded_ad_id_admob" translatable="false">ca-app-pub-5830742138865009/3004095023</string>
+    <string name="admob_native_id" translatable="false">ca-app-pub-5830742138865009/9742986783</string>
+    <string name="admob_oboarding_native_id" translatable="false">ca-app-pub-5830742138865009/5226902171</string>
+    <string name="splash_admob_interstitial_id" translatable="false">ca-app-pub-5830742138865009/2896580639</string>
+    <string name="splash_admob_appOpen_id" translatable="false">ca-app-pub-5830742138865009/1226148615</string>
+    <string name="app_open_ad_id_admob">ca-app-pub-5830742138865009/1034576920</string>
+    <string name="admob_ad_id">ca-app-pub-5830742138865009~2105508680</string>
+    <string name="admob_interstitial_id_high" translatable="false">ca-app-pub-5830742138865009/2769087461</string>
+    <string name="splash_admob_appOpen_id_high" translatable="false">ca-app-pub-5830742138865009/2797007629</string>
+    <string name="max_ad_id" translatable="false">cPHGg3slxMcxnbNqaRx9KZxhzK7y4-sLZDd676qTcq_p4BOAT7kt2FzUcSSxeobys_sNHTsyITov9ITB8hBlf7</string>
+    <string name="max_banner_id" translatable="false">2e66115ff3250000</string>
+    <string name="max_interstitial_id" translatable="false">72329960e7a76db8</string>
+    <string name="max_native_id" translatable="false">66f5a514a00a0dc1</string>
+
+
+    <string name="step">Step</string>
+    <string name="route">Route</string>
+    <string name="file_kml_open">File (.kml, .kmz or .json)</string>
+    <string name="url_kml_open">KML url</string>
+    <string name="loading">Loading</string>
+    <string name="cancel">Cancel</string>
+    <string name="wait">Please wait</string>
+    <string name="ok">OK</string>
+    <string name="notification_permission" />
+
+    <string name="usd">USD</string>
+    <string name="local">LOCAL</string>
+    <string name="usa">USA</string>
+    <string name="united_states_of_america">United states of america</string>
+    <string name="loading_advertisement">Ad is Loading...</string>
+    <string name="your_gps_seems_to_be_disabled">Your GPS seems to be disabled!!</string>
+    <string name="enable">Enable</string>
+    <string name="elapsed">ELAPSED</string>
+    <string name="lets_go">Lets Go</string>
+    <string name="pause">Pause</string>
+    <string name="stop">Stop</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+</resources>

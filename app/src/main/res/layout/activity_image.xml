@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.ImageActivity">
+    <View
+        android:id="@+id/whiteView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:elevation="@dimen/_9sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <ProgressBar
+        android:id="@+id/progressbarLast"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/constraintLayout25"
+        app:layout_constraintStart_toStartOf="@+id/constraintLayout25"
+        app:layout_constraintTop_toTopOf="@+id/constraintLayout25" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout25"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/bannerID"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.flaviofaria.kenburnsview.KenBurnsView
+            android:id="@+id/imageKenbo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/view26"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/bg_altimter"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/lastImageView"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageView22"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginStart="8dp"
+            android:src="@drawable/red_marker"
+            app:layout_constraintBottom_toBottomOf="@+id/view26"
+            app:layout_constraintStart_toStartOf="@+id/view26"
+            app:layout_constraintTop_toTopOf="@+id/view26" />
+
+        <TextView
+            android:id="@+id/textLasttxt"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="32dp"
+            android:ellipsize="marquee"
+            android:gravity="center"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:singleLine="true"
+            android:text="place"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/view26"
+            app:layout_constraintEnd_toEndOf="@+id/view26"
+            app:layout_constraintStart_toEndOf="@+id/imageView22"
+            app:layout_constraintTop_toTopOf="@+id/view26" />
+
+        <ImageView
+            android:id="@+id/lastImageView"
+            android:layout_width="25dp"
+            android:layout_height="25sp"
+            android:layout_marginStart="16dp"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:saveEnabled="true"
+            android:src="@drawable/arrowhite"
+            app:layout_constraintBottom_toBottomOf="@+id/view26"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/view26" />
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="50dp"
+            android:layout_height="200dp"
+            android:layout_marginEnd="5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <View
+                android:id="@+id/ViewHome"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:visibility="gone"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_ccc"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:visibility="gone"
+                android:src="@drawable/homelast"
+                app:layout_constraintBottom_toBottomOf="@+id/ViewHome"
+                app:layout_constraintEnd_toEndOf="@+id/ViewHome"
+                app:layout_constraintStart_toStartOf="@+id/ViewHome"
+                app:layout_constraintTop_toTopOf="@+id/ViewHome" />
+
+            <View
+                android:id="@+id/ViewHeart"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_ccc"
+                app:layout_constraintEnd_toEndOf="@+id/ViewHome"
+                app:layout_constraintStart_toStartOf="@+id/ViewHome"
+                app:layout_constraintTop_toBottomOf="@+id/ViewHome" />
+
+            <ImageView
+                android:visibility="gone"
+                android:id="@+id/imageView21"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/heartlast"
+                app:layout_constraintBottom_toBottomOf="@+id/ViewHeart"
+                app:layout_constraintEnd_toEndOf="@+id/ViewHeart"
+                app:layout_constraintStart_toStartOf="@+id/ViewHeart"
+                app:layout_constraintTop_toTopOf="@+id/ViewHeart" />
+
+            <View
+                android:visibility="gone"
+                android:id="@+id/ViewShare"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_ccc"
+                app:layout_constraintEnd_toEndOf="@+id/ViewHeart"
+                app:layout_constraintStart_toStartOf="@+id/ViewHeart"
+                app:layout_constraintTop_toBottomOf="@+id/ViewHeart" />
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/sharelast"
+                app:layout_constraintBottom_toBottomOf="@+id/ViewShare"
+                app:layout_constraintEnd_toEndOf="@+id/ViewShare"
+                app:layout_constraintStart_toStartOf="@+id/ViewShare"
+                app:layout_constraintTop_toTopOf="@+id/ViewHeart" />
+
+            <View
+                android:id="@+id/ViewDownload"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_ccc"
+                app:layout_constraintEnd_toEndOf="@+id/ViewShare"
+                app:layout_constraintStart_toStartOf="@+id/ViewShare"
+                app:layout_constraintTop_toBottomOf="@+id/ViewShare" />
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/downloadlast"
+                app:layout_constraintBottom_toBottomOf="@+id/ViewDownload"
+                app:layout_constraintEnd_toEndOf="@+id/ViewDownload"
+                app:layout_constraintStart_toStartOf="@+id/ViewDownload"
+                app:layout_constraintTop_toTopOf="@+id/ViewDownload" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_2sdp"
+        app:layout_constraintBottom_toTopOf="@+id/bannerID" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/bannerID"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <include
+            android:id="@+id/bannerAdPlace"
+            layout="@layout/street_view_my_bannar_small"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!--<ImageView
+        android:id="@+id/lastImageView"
+        android:layout_width="25dp"
+        android:layout_height="25sp"
+        android:src="@drawable/arrowhite"
+        android:layout_marginStart="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textLasttxt" />/
+
+    <TextView
+        android:id="@+id/textLasttxt"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="24dp"
+        android:gravity="center"
+        android:text="place"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout26"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/lastImageView"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <ProgressBar
+        android:id="@+id/progressLastScreen"
+        android:layout_width="100dp"
+        android:layout_height="60dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/constraintLayout26"
+        app:layout_constraintTop_toBottomOf="@+id/textLasttxt" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout26"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="18dp"
+        android:background="@drawable/bg_home"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textLasttxt">
+
+        <com.flaviofaria.kenburnsview.KenBurnsView
+            android:id="@+id/imageKenbo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <View
+        android:id="@+id/view26"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="40dp"
+        android:background="@drawable/bg_altimter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/constraintLayout26" />
+
+    <ImageView
+        android:id="@+id/imageView22"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="8dp"
+        android:src="@drawable/red_marker"
+        app:layout_constraintBottom_toBottomOf="@+id/view26"
+        app:layout_constraintStart_toStartOf="@+id/view26"
+        app:layout_constraintTop_toTopOf="@+id/view26" />
+
+    <TextView
+        android:id="@+id/currentLocShowImage"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:ellipsize="marquee"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:singleLine="true"
+        android:text="Current Location"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="@+id/view26"
+        app:layout_constraintEnd_toEndOf="@+id/view26"
+        app:layout_constraintStart_toEndOf="@+id/imageView22"
+        app:layout_constraintTop_toTopOf="@+id/view26" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="50dp"
+        android:layout_height="200dp"
+        android:layout_marginEnd="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <View
+            android:id="@+id/ViewHome"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bg_ccc"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/homelast"
+            app:layout_constraintBottom_toBottomOf="@+id/ViewHome"
+            app:layout_constraintEnd_toEndOf="@+id/ViewHome"
+            app:layout_constraintStart_toStartOf="@+id/ViewHome"
+            app:layout_constraintTop_toTopOf="@+id/ViewHome" />
+
+        <View
+            android:id="@+id/ViewHeart"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bg_ccc"
+            app:layout_constraintEnd_toEndOf="@+id/ViewHome"
+            app:layout_constraintStart_toStartOf="@+id/ViewHome"
+            app:layout_constraintTop_toBottomOf="@+id/ViewHome" />
+
+        <ImageView
+            android:id="@+id/imageView21"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+             app:layout_constraintBottom_toBottomOf="@+id/ViewHeart"
+            app:layout_constraintEnd_toEndOf="@+id/ViewHeart"
+            app:layout_constraintStart_toStartOf="@+id/ViewHeart"
+            app:layout_constraintTop_toTopOf="@+id/ViewHeart" />
+
+        <View
+            android:id="@+id/ViewShare"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bg_ccc"
+            app:layout_constraintEnd_toEndOf="@+id/ViewHeart"
+            app:layout_constraintStart_toStartOf="@+id/ViewHeart"
+            app:layout_constraintTop_toBottomOf="@+id/ViewHeart" />
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/sharelast"
+            app:layout_constraintBottom_toBottomOf="@+id/ViewShare"
+            app:layout_constraintEnd_toEndOf="@+id/ViewShare"
+            app:layout_constraintStart_toStartOf="@+id/ViewShare"
+            app:layout_constraintTop_toTopOf="@+id/ViewShare" />
+
+        <View
+            android:id="@+id/ViewDownload"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bg_ccc"
+            app:layout_constraintEnd_toEndOf="@+id/ViewShare"
+            app:layout_constraintStart_toStartOf="@+id/ViewShare"
+            app:layout_constraintTop_toBottomOf="@+id/ViewShare" />
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/downloadlast"
+            app:layout_constraintBottom_toBottomOf="@+id/ViewDownload"
+            app:layout_constraintEnd_toEndOf="@+id/ViewDownload"
+            app:layout_constraintStart_toStartOf="@+id/ViewDownload"
+            app:layout_constraintTop_toTopOf="@+id/ViewDownload" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

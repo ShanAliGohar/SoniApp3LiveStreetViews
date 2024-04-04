@@ -1,0 +1,650 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fuelmanager.EditCostActivity">
+
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_45sdp"
+        android:background="@color/blue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+
+        <TextView
+            android:id="@+id/textViewTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Edit Cost"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_18sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageViewBack"
+            android:layout_width="@dimen/_35sdp"
+            android:layout_height="@dimen/_35sdp"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:src="@drawable/backicon"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+        app:layout_constraintVertical_bias="0.0">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toBottomOf="@id/constraintLayout">
+
+
+
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardSelectCar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_15sdp"
+                android:background="@drawable/spinner_bg"
+                android:backgroundTint="#F2F2F2"
+                app:cardCornerRadius="@dimen/_8sdp"
+                app:cardElevation="@dimen/_10sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+
+                <Spinner
+                    android:id="@+id/spinnerSelectCar"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_35sdp"
+                    android:elevation="@dimen/_10sdp"
+                    android:padding="12dp" />
+
+            </androidx.cardview.widget.CardView>
+
+
+            <TextView
+                android:id="@+id/tvService"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:text="Service"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/cardSelectCar"
+                app:layout_constraintTop_toBottomOf="@+id/cardSelectCar" />
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardSelectService"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginHorizontal="@dimen/_15sdp"
+                android:background="@drawable/spinner_bg"
+                android:backgroundTint="#F2F2F2"
+                app:cardCornerRadius="@dimen/_8sdp"
+                app:cardElevation="@dimen/_10sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvService">
+
+
+                <Spinner
+                    android:id="@+id/spinnerSelectService"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_35sdp"
+                    android:elevation="@dimen/_10sdp"
+                    android:padding="12dp" />
+
+            </androidx.cardview.widget.CardView>
+
+
+            <TextView
+                android:id="@+id/tvReminder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:text="Reminder"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/cardSelectService"
+                app:layout_constraintTop_toBottomOf="@+id/cardSelectService" />
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardSelectReminder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginHorizontal="@dimen/_15sdp"
+                android:background="@drawable/spinner_bg"
+                android:backgroundTint="#F2F2F2"
+                app:cardCornerRadius="@dimen/_8sdp"
+                app:cardElevation="@dimen/_10sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvReminder">
+
+
+                <Switch
+                    android:id="@+id/switchSelectReminder"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_35sdp"
+                    android:paddingStart="@dimen/_10sdp"
+                    android:text="Add Reminder" />
+
+
+            </androidx.cardview.widget.CardView>
+
+
+
+
+
+            <TextView
+                android:id="@+id/CostInformation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:text="Cost Information"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/cardSelectReminder"
+                app:layout_constraintTop_toBottomOf="@+id/cardSelectReminder" />
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardCostTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginHorizontal="@dimen/_15sdp"
+                android:background="@drawable/spinner_bg"
+                android:backgroundTint="#F2F2F2"
+                app:cardCornerRadius="@dimen/_8sdp"
+                app:cardElevation="@dimen/_10sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/CostInformation">
+
+
+                <EditText
+                    android:id="@+id/editTextCostTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_35sdp"
+                    android:background="@android:color/transparent"
+                    android:elevation="@dimen/_10sdp"
+                    android:hint="Title"
+                    android:maxLines="1"
+                    android:padding="12dp"
+                    android:textSize="@dimen/_12sdp" />
+
+            </androidx.cardview.widget.CardView>
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardTotalCost"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_15sdp"
+                android:background="@drawable/spinner_bg"
+                android:backgroundTint="#F2F2F2"
+                app:cardCornerRadius="@dimen/_8sdp"
+                app:cardElevation="@dimen/_10sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardCostTitle">
+
+
+                <EditText
+                    android:id="@+id/editTextTotalCost"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_35sdp"
+                    android:background="@android:color/transparent"
+                    android:elevation="@dimen/_10sdp"
+                    android:hint="Total Cost"
+                    android:inputType="number"
+                    android:maxLines="1"
+                    android:padding="12dp"
+                    android:textSize="@dimen/_12sdp" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardSelectDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_15sdp"
+                android:background="@drawable/spinner_bg"
+                android:backgroundTint="#F2F2F2"
+                app:cardCornerRadius="@dimen/_8sdp"
+                app:cardElevation="@dimen/_10sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardTotalCost">
+
+
+                <TextView
+                    android:id="@+id/tvSelectDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_35sdp"
+                    android:elevation="@dimen/_10sdp"
+                    android:textColor="@color/black"
+                    android:text="Select Date"
+                    android:padding="12dp" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardSelectTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_15sdp"
+                android:background="@drawable/spinner_bg"
+                android:backgroundTint="#F2F2F2"
+                app:cardCornerRadius="@dimen/_8sdp"
+                app:cardElevation="@dimen/_10sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardSelectDate">
+
+
+                <TextView
+                    android:id="@+id/tvSelectTime"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_35sdp"
+                    android:elevation="@dimen/_10sdp"
+                    android:text="Select Time"
+                    android:textColor="@color/black"
+                    android:padding="12dp" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardNote"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_15sdp"
+                android:background="@drawable/spinner_bg"
+                android:backgroundTint="#F2F2F2"
+                app:cardCornerRadius="@dimen/_8sdp"
+                app:cardElevation="@dimen/_10sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardSelectTime">
+
+
+                <EditText
+                    android:id="@+id/editTextCostNote"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_60sdp"
+                    android:background="@android:color/transparent"
+                    android:elevation="@dimen/_10sdp"
+                    android:gravity="start"
+                    android:hint="Note...."
+                    android:padding="12dp"
+                    android:textSize="@dimen/_12sdp" />
+
+            </androidx.cardview.widget.CardView>
+
+
+            <TextView
+                android:id="@+id/tvRecurrence"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:text="Recurrence"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/cardNote"
+                app:layout_constraintTop_toBottomOf="@+id/cardNote" />
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardSelectRecurrence"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginHorizontal="@dimen/_15sdp"
+                android:background="@drawable/spinner_bg"
+                android:backgroundTint="#F2F2F2"
+                app:cardCornerRadius="@dimen/_8sdp"
+                app:cardElevation="@dimen/_10sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvRecurrence">
+
+
+                <Spinner
+                    android:id="@+id/spinnerSelectRecurrence"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_35sdp"
+                    android:elevation="@dimen/_10sdp"
+                    android:padding="12dp" />
+
+            </androidx.cardview.widget.CardView>
+
+
+            <Button
+                android:id="@+id/btnAddCost"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="@dimen/_35sdp"
+                android:layout_margin="@dimen/_10sdp"
+                android:background="@drawable/bg_button_cost"
+                android:backgroundTint="#2A3747"
+                android:text="Update"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cardSelectRecurrence" />
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardSetReminder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_2sdp"
+                android:layout_marginHorizontal="@dimen/_15sdp"
+                android:background="@drawable/spinner_bg"
+                android:backgroundTint="#F2F2F2"
+                app:cardCornerRadius="@dimen/_8sdp"
+                android:visibility="gone"
+                android:elevation="@dimen/_5sdp"
+                app:cardElevation="@dimen/_10sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardSelectReminder">
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btnSpecificReminder"
+                        android:layout_width="@dimen/_100sdp"
+                        android:layout_height="@dimen/_30sdp"
+                        android:background="@drawable/bg_button_cost"
+                        android:backgroundTint="@color/blue"
+                        android:elevation="@dimen/_10sdp"
+                        android:text="Specific"
+                        android:layout_margin="@dimen/_20sdp"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_10sdp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btnRemindInReminder"
+                        android:layout_width="@dimen/_100sdp"
+                        android:layout_height="@dimen/_30sdp"
+                        android:background="@drawable/bg_button_cost"
+                        android:backgroundTint="#7AF2F2F2"
+                        android:text="Remind In"
+                        android:textAllCaps="false"
+                        android:layout_margin="@dimen/_20sdp"
+                        android:textColor="#BF2A3747"
+                        android:textSize="@dimen/_10sdp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Odometer"
+                        android:id="@+id/tvOdometer"
+                        android:textColor="#BF2A3747"
+                        android:layout_marginTop="@dimen/_15sdp"
+                        app:layout_constraintStart_toStartOf="@+id/btnSpecificReminder"
+                        app:layout_constraintTop_toBottomOf="@id/btnSpecificReminder" />
+
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cardReminderOdometer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:backgroundTint="#F2F2F2"
+                        app:cardCornerRadius="@dimen/_8sdp"
+                        android:layout_marginHorizontal="@dimen/_20sdp"
+                        app:cardElevation="@dimen/_10sdp"
+                        app:layout_constraintEnd_toEndOf="@+id/btnRemindInReminder"
+                        app:layout_constraintStart_toStartOf="@+id/tvOdometer"
+                        app:layout_constraintTop_toBottomOf="@+id/tvOdometer">
+
+
+                        <EditText
+                            android:id="@+id/editTextOdometer"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_35sdp"
+                            android:background="@android:color/transparent"
+                            android:elevation="@dimen/_10sdp"
+                            android:hint="0"
+                            android:inputType="number"
+                            android:maxLines="1"
+                            android:padding="12dp"
+                            android:textSize="@dimen/_12sdp" />
+
+                    </androidx.cardview.widget.CardView>
+
+
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Select Date"
+                        android:id="@+id/tvSelectReminderDate"
+                        android:textColor="#BF2A3747"
+                        android:layout_marginTop="@dimen/_15sdp"
+                        app:layout_constraintStart_toStartOf="@+id/cardReminderOdometer"
+                        app:layout_constraintTop_toBottomOf="@id/cardReminderOdometer" />
+
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cardSelectReminderDate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:backgroundTint="#F2F2F2"
+                        app:cardCornerRadius="@dimen/_8sdp"
+                        android:layout_marginHorizontal="@dimen/_20sdp"
+                        app:cardElevation="@dimen/_10sdp"
+                        app:layout_constraintEnd_toEndOf="@+id/btnRemindInReminder"
+                        app:layout_constraintStart_toStartOf="@+id/tvSelectReminderDate"
+                        app:layout_constraintTop_toBottomOf="@+id/tvSelectReminderDate">
+
+
+                        <TextView
+                            android:id="@+id/textViewSelectReminderDate"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_35sdp"
+                            android:background="@android:color/transparent"
+                            android:elevation="@dimen/_10sdp"
+                            android:text="3/5/2024"
+                            android:inputType="number"
+                            android:textColor="@color/black"
+                            android:maxLines="1"
+                            android:padding="12dp"
+                            android:textSize="@dimen/_12sdp" />
+
+                    </androidx.cardview.widget.CardView>
+
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cardSelectRecurringReminder"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/_20sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:background="@drawable/spinner_bg"
+                        android:backgroundTint="#F2F2F2"
+                        app:cardCornerRadius="@dimen/_8sdp"
+                        app:cardElevation="@dimen/_10sdp"
+                        app:layout_constraintEnd_toEndOf="@+id/cardSelectReminderDate"
+                        app:layout_constraintStart_toStartOf="@+id/cardSelectReminderDate"
+                        app:layout_constraintTop_toBottomOf="@+id/cardSelectReminderDate">
+
+
+                        <Switch
+                            android:id="@+id/switchSelectRecurringReminder"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_35sdp"
+                            android:paddingStart="@dimen/_10sdp"
+                            android:textColor="#BF2A3747"
+                            android:text="Recurring Reminder" />
+
+
+                    </androidx.cardview.widget.CardView>
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Repeat Everyday"
+                        android:id="@+id/tvRepeatEveryDay"
+                        android:textColor="#BF2A3747"
+                        android:layout_marginTop="@dimen/_15sdp"
+                        app:layout_constraintStart_toStartOf="@+id/cardReminderOdometer"
+                        app:layout_constraintTop_toBottomOf="@id/cardSelectRecurringReminder" />
+
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cardReminderRepeatDistance"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/_20sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:backgroundTint="#F2F2F2"
+                        app:cardCornerRadius="@dimen/_8sdp"
+                        app:cardElevation="@dimen/_10sdp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tvRepeatEveryDay"
+                        app:layout_constraintWidth_percent="0.4">
+
+
+                        <EditText
+                            android:id="@+id/editTextOdometerRepeatDistance"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_35sdp"
+                            android:background="@android:color/transparent"
+                            android:elevation="@dimen/_10sdp"
+                            android:hint="Distance"
+                            android:inputType="number"
+                            android:maxLines="1"
+                            android:padding="12dp"
+                            android:textSize="@dimen/_12sdp" />
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cardReminderRepeatMonths"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/_20sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:backgroundTint="#F2F2F2"
+                        app:cardCornerRadius="@dimen/_8sdp"
+                        app:cardElevation="@dimen/_10sdp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tvRepeatEveryDay"
+                        app:layout_constraintWidth_percent="0.4">
+
+
+                        <EditText
+                            android:id="@+id/editTextOdometerRepeatMonths"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_35sdp"
+                            android:background="@android:color/transparent"
+                            android:elevation="@dimen/_10sdp"
+                            android:hint="Months"
+                            android:inputType="number"
+                            android:maxLines="1"
+                            android:padding="12dp"
+                            android:textSize="@dimen/_12sdp" />
+
+                    </androidx.cardview.widget.CardView>
+
+
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_marginBottom="@dimen/_20sdp"
+                        android:text="Remainder set as done"
+                        android:textColor="#BF2A3747"
+                        android:id="@+id/checkBoxDone"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/cardReminderRepeatDistance"
+                        app:layout_constraintTop_toBottomOf="@+id/cardReminderRepeatMonths" />
+
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toTopOf="@+id/checkBoxDone"
+                        app:layout_constraintBottom_toBottomOf="@+id/checkBoxDone"
+                        app:layout_constraintEnd_toEndOf="@id/cardReminderRepeatMonths"
+                        app:cardElevation="@dimen/_10sdp"
+                        android:id="@+id/cardSetRemainderDone"
+                        app:cardCornerRadius="@dimen/_2sdp">
+
+
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/_3sdp"
+                            android:src="@drawable/baseline_check_24"
+                            />
+
+
+                    </androidx.cardview.widget.CardView>
+
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+            </androidx.cardview.widget.CardView>
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

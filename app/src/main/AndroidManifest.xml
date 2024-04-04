@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.live.streetview.navigation.earthmap.compass.map">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="com.google.android.gms.permission.AD_ID" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32" />
+    <uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32" />
+
+    <queries>
+        <intent>
+            <action android:name="com.google.android.youtube.api.service.START" />
+        </intent>
+    </queries>
+
+    <application
+        android:name=".Ads.StreetViewAppSoniMyAppClass"
+        android:allowBackup="true"
+        android:enableOnBackInvokedCallback="true"
+        android:hardwareAccelerated="true"
+        android:icon="@drawable/appicon"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:roundIcon="@drawable/appicon"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true"
+        tools:targetApi="31">
+        <activity
+            android:name=".activities.OnBoardingScreen"
+            android:exported="false" />
+        <activity
+            android:name=".gdpr.ConsentActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <receiver
+            android:name=".fuelmanager.utils.AlarmReceiver"
+            android:enabled="true"
+            android:exported="false" />
+
+        <activity
+            android:name=".fuelmanager.CostsLogActivity"
+            android:exported="false" />
+        <activity
+            android:name=".fuelmanager.EditCostActivity"
+            android:exported="false" />
+        <activity
+            android:name=".fuelmanager.AddCostActivity"
+            android:exported="false" />
+
+        <receiver android:name=".fuelmanager.services.StopServiceReceiver" />
+
+        <service
+            android:name=".fuelmanager.services.AutoTripServices"
+            android:enabled="true"
+            android:exported="false" />
+
+        <activity
+            android:name=".activities.MainChatViewActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".fuelWork.FuelDbActivity"
+            android:exported="false"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".fuelmanager.FuelStationMapActivity"
+            android:exported="false" />
+        <activity
+            android:name=".fuelmanager.RefuelingActivity"
+            android:exported="true" />
+        <activity
+            android:name=".fuelmanager.TripActivity"
+            android:exported="false" />
+        <activity
+            android:name=".fuelmanager.TripLogActivity"
+            android:exported="false" />
+        <activity
+            android:name=".fuelmanager.chart.ChartsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".fuelmanager.StartFuelManagerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".fuelmanager.VehiclesListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".fuelmanager.VehiclesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".fuelmanager.EditVehiclesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".fuelmanager.FuelManagerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".fuelmanager.fuelprices.FuelDbActivity"
+            android:exported="false" />
+        <activity
+            android:name=".fuelmanager.MilageLogActivity"
+            android:exported="false" />
+        <activity
+            android:name=".fuelmanager.StatsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".fuelmanager.EditTripActivity"
+            android:exported="false" />
+        <activity
+            android:name=".fuelmanager.fuelprices.TableActivity"
+            android:exported="false" />
+        <activity
+            android:name=".fuelWork.TableActivity"
+            android:exported="false"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".activities.SearchPlacesActivity"
+            android:exported="false"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".activities.ChoseKmlTypeActivity"
+            android:exported="false"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".activities.KmlViewerActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".activities.ChatActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".activities.NewCompassActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".activities.DetailsHoroScopActivity"
+            android:exported="false"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".activities.VoiceNavigationActivity"
+            android:exported="true">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+
+        <meta-data
+            android:name="applovin.sdk.key"
+            android:value="@string/max_ad_id" /> <!-- Max AppIds -->
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="@string/admob_ad_id" />
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+
+        <activity
+            android:name=".activities.NearByActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".activities.EarthMap2DActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".activities.NewAreaCalculatorActivity"
+            android:exported="false">
+
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".activities.DistanceCalculatorActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".activities.osmNavigation.OsmNavigation"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.TESTActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.ImageActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".GPSTESTINGActivity2"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.SplashActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".activities.YotubeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.FMActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.WeatherActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.osmNavigation.NavigationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.SpeedMeterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.FlagInformartionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.Viewactivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.CountryVediosActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.WebcamActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.HospitalActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.LiveEarthMapActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.PlacesActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.CityActivities"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.CountryActivities"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.AltimeterActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.CountryInfoActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.ISDCodeActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.FuelCalculatorActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.NewNavigationCloneActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" /> <!-- Admob AppIds -->
+        <service
+            android:name=".activities.utils.LiveStreetViewFcmMessaging"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+        <service android:name=".MyServiceKt" />
+        <service android:name=".location.LocationService" />
+    </application>
+
+
+</manifest>

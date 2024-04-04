@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="navy">#000080</color>
+    <color name="Lime">#00FF00</color>
+    <color name="Red">#FF0000</color>
+    <color name="silver">#C0C0C0</color>
+    <color name="ccc">#6495ED</color>
+    <color name="half">#EEEEEE</color>
+    <color name="bg">#2B43B4</color>
+    <color name="polygone">#BF37447F</color>
+    <color name="cardstreet">#C453FB</color>
+    <color name="cardgps">#FB7979</color>
+    <color name="earth">#FFC72D</color>
+    <color name="map">#5194F8</color>
+    <color name="nearby">#8BC83C</color>
+    <color name="fm">#45B8A8</color>
+    <color name="speed">#DD4141</color>
+    <color name="weather">#D03EE1</color>
+    <color name="webcams">#1D8A82</color>
+
+    <color name="fuel">#D041E1</color>
+    <color name="compass">#F14545</color>
+    <color name="area">#FFC420</color>
+    <color name="iso">#63A2FF</color>
+    <color name="contryinfo">#95D640</color>
+    <color name="altimeter">#20837C</color>
+    <color name="drawr_color1">#8993C5</color>
+    <color name="button_active">#2D44B5</color>
+    <color name="button_nonactive">#F3F3F3</color>
+    <color name="text_nonactivite">#686668</color>
+    <color name="yellow">#FAC729</color>
+
+
+
+    <color name="blue">#2D44B5</color>
+    <color name="dim_gray">#DDE2E4</color>
+    <color name="gray">#808080</color>
+    <color name="line_color">#676767</color>
+
+
+
+    <color name="clrBgFuelManager">#7AF2F2F2</color>
+
+
+</resources>

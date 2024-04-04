@@ -1,0 +1,594 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <View
+        android:id="@+id/whiteView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:elevation="@dimen/_9sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/innerConstraint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bg"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <ImageView
+            android:id="@+id/backArrow"
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_margin="@dimen/_10sdp"
+            android:padding="@dimen/_4sdp"
+            android:src="@drawable/arrowhite"
+            app:layout_constraintBottom_toBottomOf="@id/innerConstraint"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Earth Map2D"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_15sdp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/backArrow"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/backArrow" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <org.osmdroid.views.MapView
+        android:id="@+id/map"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginBottom="@dimen/_1sdp"
+        app:layout_constraintBottom_toTopOf="@id/bannerID"
+        app:layout_constraintTop_toBottomOf="@+id/innerConstraint" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_marginStart="@dimen/_9sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_20sdp"
+        app:cardCornerRadius="@dimen/_7sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/map">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/bg_streetview">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="@dimen/_25sdp"
+                android:layout_height="@dimen/_25sdp"
+                android:foregroundGravity="center"
+                android:padding="@dimen/_5sdp"
+                android:src="@drawable/searchicon"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/black" />
+
+            <EditText
+                android:id="@+id/sercheditText"
+                android:layout_width="@dimen/_200sdp"
+                android:layout_height="@dimen/_30sdp"
+                android:background="@android:color/transparent"
+                android:gravity="start|center"
+                android:hint="search"
+                android:textColorHint="@color/black"
+                android:textColor="@color/black"
+                android:imeOptions="actionSearch"
+                android:inputType="text"
+                android:maxLines="1"
+                android:paddingStart="@dimen/_5sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageView"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <ImageView
+        android:id="@+id/SearchBtn"
+        android:layout_width="@dimen/_30sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_marginStart="@dimen/_3sdp"
+        android:background="@drawable/background_buttons"
+        android:clickable="true"
+        android:foreground="?attr/selectableItemBackground"
+        android:foregroundGravity="center"
+        android:padding="@dimen/_7sdp"
+        android:src="@drawable/searchicon"
+        app:layout_constraintBottom_toBottomOf="@+id/cardView"
+        app:layout_constraintStart_toEndOf="@+id/cardView"
+        app:layout_constraintTop_toTopOf="@+id/cardView" />
+
+    <ImageView
+        android:id="@+id/navigateBtn"
+        android:layout_width="@dimen/_33sdp"
+        android:layout_height="@dimen/_33sdp"
+        android:layout_marginEnd="@dimen/_15sdp"
+        android:background="@drawable/bg_navigation"
+        android:padding="@dimen/_8sdp"
+        android:visibility="gone"
+        android:src="@drawable/navigationicon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mapLayoutOptions" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/mapLayoutOptions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_60sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/innerConstraint">
+
+        <ImageView
+            android:id="@+id/ImgZoomOut"
+            android:layout_width="@dimen/_33sdp"
+            android:layout_height="@dimen/_33sdp"
+            android:layout_margin="@dimen/_5sdp"
+            android:background="@drawable/background_buttons"
+            android:clickable="true"
+            android:foreground="?attr/selectableItemBackground"
+            android:padding="@dimen/_8sdp"
+            android:src="@drawable/zoomout"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageView
+            android:id="@+id/ImgZoomIn"
+            android:layout_width="@dimen/_33sdp"
+            android:layout_height="@dimen/_33sdp"
+            android:layout_margin="@dimen/_5sdp"
+            android:background="@drawable/background_buttons"
+            android:clickable="true"
+            android:foreground="?attr/selectableItemBackground"
+            android:padding="@dimen/_8sdp"
+            android:src="@drawable/zoomin"
+            app:layout_constraintBottom_toTopOf="@id/ImgZoomOut"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageView
+            android:id="@+id/ImgCurrentLocation"
+            android:layout_width="@dimen/_33sdp"
+            android:layout_height="@dimen/_33sdp"
+            android:layout_margin="@dimen/_5sdp"
+            android:background="@drawable/background_buttons"
+            android:clickable="true"
+            android:foreground="?attr/selectableItemBackground"
+            android:padding="@dimen/_6sdp"
+            android:src="@drawable/current_location"
+            app:layout_constraintBottom_toTopOf="@id/ImgZoomIn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageView
+        android:id="@+id/mapLayerStyleImg"
+        android:layout_width="@dimen/_33sdp"
+        android:layout_height="@dimen/_33sdp"
+        android:background="@drawable/bg_ccc"
+        android:padding="@dimen/_7sdp"
+        android:src="@drawable/map_style"
+        android:layout_marginBottom="@dimen/_2sdp"
+        app:layout_constraintBottom_toTopOf="@+id/mapLayoutOptions"
+        app:layout_constraintEnd_toEndOf="@+id/mapLayoutOptions"
+        app:layout_constraintStart_toStartOf="@+id/mapLayoutOptions" />
+
+<!--    <include-->
+<!--        android:id="@+id/layermap"-->
+<!--        layout="@layout/map_layer_dialog"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:layout_constraintBottom_toBottomOf="@+id/map"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/cardView" />-->
+<!--    <ImageView-->
+<!--        android:id="@+id/mapLayerStyleImg"-->
+<!--        android:layout_width="@dimen/_33sdp"-->
+<!--        android:layout_height="@dimen/_33sdp"-->
+<!--        android:layout_margin="@dimen/_5sdp"-->
+<!--        android:background="@drawable/background_buttons"-->
+<!--        android:clickable="true"-->
+<!--        android:foreground="?attr/selectableItemBackground"-->
+<!--        android:padding="@dimen/_6sdp"-->
+<!--        android:src="@drawable/styles"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/mapLayoutOptions"-->
+<!--        app:layout_constraintEnd_toEndOf="@+id/mapLayoutOptions"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/mapLayoutOptions" />-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/mapLayerLayout"
+        android:visibility="gone"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:background="@drawable/gps_style"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/satelliteMap"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginBottom="8dp"
+            android:src="@drawable/settta"
+            app:layout_constraintBottom_toTopOf="@+id/normalMapStyle"
+            app:layout_constraintEnd_toStartOf="@+id/trafficMap"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/view2"
+            android:layout_width="0dp"
+            android:layout_height="15dp"
+            android:alpha="0.3"
+            android:background="@color/black"
+            app:layout_constraintBottom_toBottomOf="@+id/satelliteMap"
+            app:layout_constraintEnd_toEndOf="@+id/satelliteMap"
+            app:layout_constraintStart_toStartOf="@+id/satelliteMap"
+            app:layout_constraintTop_toTopOf="@+id/satelliteMap" />
+
+        <TextView
+            android:id="@+id/textView67"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Setalite"
+            android:textColor="@color/white"
+            android:textSize="9sp"
+            app:layout_constraintBottom_toBottomOf="@+id/view2"
+            app:layout_constraintEnd_toEndOf="@+id/satelliteMap"
+            app:layout_constraintStart_toStartOf="@+id/satelliteMap"
+            app:layout_constraintTop_toTopOf="@+id/view2" />
+
+        <ImageView
+            android:id="@+id/trafficMap"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="4dp"
+            android:src="@drawable/terain"
+            app:layout_constraintStart_toEndOf="@+id/satelliteMap"
+            app:layout_constraintTop_toTopOf="@+id/satelliteMap" />
+
+        <ImageView
+            android:id="@+id/normalMapStyle"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/def"
+            app:layout_constraintStart_toStartOf="@+id/satelliteMap"
+            app:layout_constraintTop_toBottomOf="@+id/satelliteMap" />
+
+        <ImageView
+            android:id="@+id/darkMapStyle"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/night"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/normalMapStyle"
+            app:layout_constraintEnd_toEndOf="@+id/trafficMap"
+            app:layout_constraintStart_toEndOf="@+id/normalMapStyle"
+            app:layout_constraintTop_toBottomOf="@+id/satelliteMap" />
+
+        <View
+            android:id="@+id/view22"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_11sdp"
+            android:alpha="0.3"
+            android:background="@color/black"
+            app:layout_constraintBottom_toBottomOf="@+id/darkMapStyle"
+            app:layout_constraintEnd_toEndOf="@+id/darkMapStyle"
+            app:layout_constraintStart_toStartOf="@+id/darkMapStyle"
+            app:layout_constraintTop_toTopOf="@+id/darkMapStyle" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Night"
+            android:textColor="@color/white"
+            android:textSize="8dp"
+            android:textStyle="bold"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/view22"
+            app:layout_constraintEnd_toEndOf="@+id/darkMapStyle"
+            app:layout_constraintStart_toStartOf="@+id/darkMapStyle"
+            app:layout_constraintTop_toTopOf="@+id/view22" />
+
+        <View
+            android:id="@+id/view14"
+            android:layout_width="0dp"
+            android:layout_height="15dp"
+            android:alpha="0.3"
+            android:background="@color/black"
+            app:layout_constraintBottom_toBottomOf="@+id/trafficMap"
+            app:layout_constraintEnd_toEndOf="@+id/trafficMap"
+            app:layout_constraintStart_toStartOf="@+id/trafficMap"
+            app:layout_constraintTop_toTopOf="@+id/trafficMap" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Traffic"
+            android:textColor="@color/white"
+            android:textSize="8sp"
+            app:layout_constraintBottom_toBottomOf="@+id/view14"
+            app:layout_constraintEnd_toEndOf="@+id/trafficMap"
+            app:layout_constraintStart_toStartOf="@+id/trafficMap"
+            app:layout_constraintTop_toTopOf="@+id/view14" />
+
+        <View
+            android:id="@+id/view17"
+            android:layout_width="0dp"
+            android:layout_height="15dp"
+            android:alpha="0.3"
+            android:background="@color/black"
+            app:layout_constraintBottom_toBottomOf="@+id/normalMapStyle"
+            app:layout_constraintEnd_toEndOf="@+id/normalMapStyle"
+            app:layout_constraintStart_toStartOf="@+id/normalMapStyle"
+            app:layout_constraintTop_toTopOf="@+id/normalMapStyle" />
+
+        <TextView
+            android:id="@+id/textView63"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Default"
+            android:textColor="@color/white"
+            android:textSize="9sp"
+            app:layout_constraintBottom_toBottomOf="@+id/view17"
+            app:layout_constraintEnd_toEndOf="@+id/normalMapStyle"
+            app:layout_constraintStart_toStartOf="@+id/normalMapStyle"
+            app:layout_constraintTop_toTopOf="@+id/view17" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_2sdp"
+        app:layout_constraintBottom_toTopOf="@+id/bannerID" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/bannerID"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <include
+            android:id="@+id/bannerAd"
+            layout="@layout/street_view_my_bannar_small"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+<!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--    xmlns:tools="http://schemas.android.com/tools"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    android:background="@color/bg">-->
+
+<!--    <ImageView-->
+<!--        android:id="@+id/arrowbackEarthMap3D"-->
+<!--        android:layout_width="25dp"-->
+<!--        android:layout_height="25dp"-->
+<!--        android:layout_marginStart="16dp"-->
+<!--        android:focusable="true"-->
+<!--        android:foreground="?attr/selectableItemBackgroundBorderless"-->
+<!--        android:saveEnabled="true"-->
+<!--        android:src="@drawable/arrowhite"-->
+<!--        app:layout_constraintBottom_toBottomOf="@+id/textView57"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/textView57" />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/textView57"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="16dp"-->
+<!--        android:layout_marginBottom="8dp"-->
+<!--        android:text="Earth Map 2D"-->
+<!--        android:textColor="@color/white"-->
+<!--        android:textSize="20sp"-->
+<!--        android:textStyle="bold"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/constraintLayout26"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
+
+<!--    <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--        android:id="@+id/constraintLayout26"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="0dp"-->
+<!--        android:layout_marginTop="8dp"-->
+<!--        android:background="@drawable/bg_home"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/bannerID"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/textView57">-->
+
+<!--        <org.osmdroid.views.MapView-->
+<!--            android:id="@+id/mapView"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintHorizontal_bias="1.0"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent"-->
+<!--            app:layout_constraintVertical_bias="0.0" />-->
+
+<!--        <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--            android:id="@+id/constraintLayout34"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="@dimen/_20sdp"-->
+<!--            android:layout_marginEnd="@dimen/_20sdp"-->
+<!--            android:background="@drawable/bd_edittextstroke"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="@+id/mapView">-->
+
+<!--            <ImageView-->
+<!--                android:id="@+id/imageView"-->
+<!--                android:layout_width="@dimen/_25sdp"-->
+<!--                android:layout_height="@dimen/_25sdp"-->
+<!--                android:foregroundGravity="center"-->
+<!--                android:padding="@dimen/_5sdp"-->
+<!--                android:src="@drawable/searchicon"-->
+<!--                app:layout_constraintBottom_toBottomOf="@+id/sercheditText"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toTopOf="@+id/sercheditText" />-->
+
+<!--            <EditText-->
+<!--                android:id="@+id/sercheditText"-->
+<!--                android:layout_width="@dimen/_200sdp"-->
+<!--                android:layout_height="@dimen/_30sdp"-->
+<!--                android:background="@android:color/transparent"-->
+<!--                android:gravity="start|center"-->
+<!--                android:hint="search"-->
+<!--                android:imeOptions="actionSearch"-->
+<!--                android:inputType="text"-->
+<!--                android:textColor="@color/white"-->
+<!--                android:maxLines="1"-->
+<!--                android:paddingStart="@dimen/_5sdp"-->
+<!--                android:textColorHint="@color/white"-->
+<!--                app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintStart_toEndOf="@+id/imageView"-->
+<!--                app:layout_constraintTop_toTopOf="parent" />-->
+<!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+<!--        <ImageView-->
+<!--            android:id="@+id/SearchBtn"-->
+<!--            android:layout_width="@dimen/_30sdp"-->
+<!--            android:layout_height="@dimen/_30sdp"-->
+<!--            android:background="@drawable/background_buttons"-->
+<!--            android:clickable="true"-->
+<!--            android:foreground="?attr/selectableItemBackground"-->
+<!--            android:foregroundGravity="center"-->
+<!--            android:padding="@dimen/_7sdp"-->
+<!--            android:src="@drawable/searchicon"-->
+<!--            app:layout_constraintBottom_toBottomOf="@+id/constraintLayout34"-->
+<!--            app:layout_constraintStart_toEndOf="@+id/constraintLayout34"-->
+<!--            app:layout_constraintTop_toTopOf="@+id/constraintLayout34" />-->
+
+<!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+<!--    <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--        android:id="@+id/constraintLayout27"-->
+<!--        android:layout_width="100dp"-->
+<!--        android:layout_height="50dp"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent">-->
+
+<!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+<!--    <ImageView-->
+<!--        android:id="@+id/image3DButton"-->
+<!--        android:layout_width="40dp"-->
+<!--        android:layout_height="40dp"-->
+<!--        android:layout_marginEnd="8dp"-->
+<!--        android:src="@drawable/threed"-->
+<!--        android:visibility="invisible"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
+
+<!--    <View-->
+<!--        android:id="@+id/currentviewgps"-->
+<!--        android:layout_width="40dp"-->
+<!--        android:layout_height="40dp"-->
+<!--        android:layout_marginTop="8dp"-->
+<!--        android:background="@drawable/bg_ccc"-->
+<!--        app:layout_constraintEnd_toEndOf="@+id/image3DButton"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/image3DButton" />-->
+
+<!--    <ImageView-->
+<!--        android:layout_width="18dp"-->
+<!--        android:layout_height="18dp"-->
+<!--        android:src="@drawable/current_location"-->
+<!--        app:layout_constraintBottom_toBottomOf="@+id/currentviewgps"-->
+<!--        app:layout_constraintEnd_toEndOf="@+id/currentviewgps"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/currentviewgps"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/currentviewgps" />-->
+
+<!--    <ImageView-->
+<!--        android:id="@+id/imageEarth3D"-->
+<!--        android:layout_width="40dp"-->
+<!--        android:layout_height="40dp"-->
+<!--        android:layout_marginTop="8dp"-->
+<!--        android:src="@drawable/current_location"-->
+<!--        android:visibility="gone"-->
+<!--        app:layout_constraintEnd_toEndOf="@+id/image3DButton"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/image3DButton" />-->
+
+<!--    <View-->
+<!--        android:id="@+id/view"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="@dimen/_2sdp"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/bannerID" />-->
+
+<!--    <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--        android:id="@+id/bannerID"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="55dp"-->
+<!--        android:visibility="visible"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent">-->
+
+<!--        <include-->
+<!--            android:id="@+id/bannerAdPlace"-->
+<!--            layout="@layout/street_view_my_bannar_small"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent" />-->
+
+<!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+
+<!--</androidx.constraintlayout.widget.ConstraintLayout>-->

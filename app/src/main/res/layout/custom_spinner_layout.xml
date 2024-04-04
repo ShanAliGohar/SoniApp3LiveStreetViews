@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/customSpinnerImage"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:padding="5dp" /><!--Make sure image is present in Drawable folder-->
+    <TextView
+        android:id="@+id/customSpinnerTV"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textSize="12sp"
+        android:padding="5dp"
+
+        android:text="Demo"
+        android:textColor="@color/black" />
+
+</LinearLayout>

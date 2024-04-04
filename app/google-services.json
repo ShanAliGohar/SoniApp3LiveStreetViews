@@ -1,0 +1,41 @@
+{
+  "project_info": {
+    "project_number": "971758893743",
+    "firebase_url": "https://live-street-view-maps-3d-earth-default-rtdb.firebaseio.com",
+    "project_id": "live-street-view-maps-3d-earth",
+    "storage_bucket": "live-street-view-maps-3d-earth.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:971758893743:android:c417b7141df4637856f25a",
+        "android_client_info": {
+          "package_name": "com.live.streetview.navigation.earthmap.compass.map"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "971758893743-cif87i2fc68bla19v940pvklmjovc0j7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA1lG4drLhsgJ42wYL9mGcB5b_3RxFHSXU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "971758893743-cif87i2fc68bla19v940pvklmjovc0j7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      },
+      "admob_app_id": "ca-app-pub-5830742138865009~2105508680"
+    }
+  ],
+  "configuration_version": "1"
+}
