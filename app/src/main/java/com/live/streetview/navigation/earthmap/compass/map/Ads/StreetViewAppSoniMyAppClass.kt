@@ -159,7 +159,8 @@ class StreetViewAppSoniMyAppClass : Application() {
         }
     }
 
-    private fun remoteConfigData() {
+    private fun remoteConfigData()
+    {
         mFirebaseRemoteConfig = Firebase.remoteConfig
         val configSettings = remoteConfigSettings {
             minimumFetchIntervalInSeconds = 3600
