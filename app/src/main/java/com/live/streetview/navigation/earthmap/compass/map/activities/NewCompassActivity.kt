@@ -293,7 +293,11 @@ class NewCompassActivity : AppCompatActivity(), SensorEventListener, LocationLis
                     this@NewCompassActivity.applicationContext,
                     Locale.getDefault()
                 )
-                val addresses = geo.getFromLocation(comlat, comlng, 1)
+                val addresses = try {
+                geo.getFromLocation(comlat, comlng, 5)
+            } catch (e: Exception) {
+                null
+            }
 
                 withContext(Dispatchers.Main) {
                     if (addresses != null) {

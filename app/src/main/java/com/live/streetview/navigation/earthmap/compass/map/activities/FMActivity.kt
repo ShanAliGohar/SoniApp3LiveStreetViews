@@ -223,7 +223,7 @@ class FMActivity : AppCompatActivity(), RadioClickCallBack {
             override fun onFailure(
                 call: Call<ArrayList<CountryFMModelInformation?>?>, t: Throwable
             ) {
-                TODO("Not yet implemented")
+                Toast.makeText(this@FMActivity, "Please check your internet connection", Toast.LENGTH_SHORT).show()
             }
         })
     }

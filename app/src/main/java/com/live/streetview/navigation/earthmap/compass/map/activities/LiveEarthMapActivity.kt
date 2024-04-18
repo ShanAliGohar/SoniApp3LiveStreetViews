@@ -44,7 +44,9 @@ import com.live.streetview.navigation.earthmap.compass.map.activities.osmNavigat
 import com.live.streetview.navigation.earthmap.compass.map.activities.utils.OSMTileSourceFixed
 import com.live.streetview.navigation.earthmap.compass.map.databinding.ActivityLiveEarthMapBinding
 import com.streetview.navigation.liveearth.satellite.hotelbooking.helper.OsmHelper
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -441,19 +443,19 @@ class LiveEarthMapActivity : AppCompatActivity() {
                 ) as List<Address>
             if (addressList.isEmpty()) {
                 Toast.makeText(this, "Please Enter valid address", Toast.LENGTH_SHORT).show()
-//                binding.txtDestination.text = "Latitude: $Lat | Longitude: $Long"
-            } else {
-//                Destinationlat = addressList[0].latitude
-//                Destinationlong = addressList[0].longitude
             }
             if (addressList.isNotEmpty()) {
                 bindingLiveEarth!!.progressBar.visibility = View.VISIBLE
                 endPoint = GeoPoint(addressList.get(0).latitude, addressList.get(0).longitude)
                 NaviView?.visibility = View.VISIBLE
                 bindingLiveEarth!!.imageView8.visibility = View.VISIBLE
-                GlobalScope.launch(Dispatchers.IO) {
+                CoroutineScope(IO).launch {
                     showroute(carRoute)
                 }
+
+                /* GlobalScope.launch(Dispatchers.IO) {
+                     showroute(carRoute)
+                 }*/
             }
         } catch (e: IOException) {
             e.printStackTrace()

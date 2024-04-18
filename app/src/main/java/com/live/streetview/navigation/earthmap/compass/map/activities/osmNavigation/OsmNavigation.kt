@@ -302,7 +302,7 @@ class OsmNavigation : AppCompatActivity() {
 
     private fun upadateDistanceRoad() {
         try {
-            if (myLocationOverlay!!.location != null && road!!.mNodes.size > 0) {
+            if (myLocationOverlay!!.location != null && road!!.mNodes.size > 0 && road?.mNodes?.size!! > i) {
                 if (myLocationOverlay!!.location.latitude != null && myLocationOverlay!!.location.longitude != null &&
                     road!!.mNodes[i].mLocation != null
                 ) {

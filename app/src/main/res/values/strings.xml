@@ -19,7 +19,8 @@
     -->
 
 
-    <!--<string name="admob_ad_id">ca-app-pub-3940256099942544~3347511713</string>
+<!--
+    <string name="admob_ad_id">ca-app-pub-3940256099942544~3347511713</string>
     <string name="admob_banner_id" translatable="false">ca-app-pub-3940256099942544/6300978111</string>
     <string name="admob_collaspable_banner_id" translatable="false">ca-app-pub-3940256099942544/2014213617</string>
     <string name="admob_banner_id_medium" translatable="false">ca-app-pub-3940256099942544/6300978111</string>
@@ -35,7 +36,8 @@
     <string name="max_ad_id" translatable="false">cPHGg3slxMcxnbNqaRx9KZxhzK7y4-sLZDd676qTcq_p4BOAT7kt2FzUcSSxeobys_sNHTsyITov9ITB8hBlf7</string>
     <string name="max_banner_id" translatable="false">your_test_ids</string>
     <string name="max_interstitial_id" translatable="false">your_test_ids</string>
-    <string name="max_native_id" translatable="false">your_test_ids</string>-->
+    <string name="max_native_id" translatable="false">your_test_ids</string>
+-->
 
 
     <!--

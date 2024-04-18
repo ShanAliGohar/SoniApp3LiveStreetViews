@@ -4,6 +4,7 @@ import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
 class Main {
+
     @SerializedName("latitude")
     @Expose
     var latitude: Double? = null
@@ -11,4 +12,5 @@ class Main {
     @SerializedName("longitude")
     @Expose
     var longitude: Double? = null
+
 }

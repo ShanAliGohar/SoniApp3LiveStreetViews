@@ -48,7 +48,7 @@ class StreetViewAppSoniMyAppClass : Application() {
         adsDatabaseReferenceStreetView =
             FirebaseDatabase.getInstance().getReference("Live_StreetView")
         CoroutineScope(Dispatchers.IO).launch {
-            getDataFromFirebase()
+             getDataFromFirebase()
         }
 //        addModelToFirebase(this)
         remoteConfigData()
