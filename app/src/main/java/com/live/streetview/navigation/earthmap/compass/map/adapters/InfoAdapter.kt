@@ -27,6 +27,7 @@ class InfoAdapter(
     var list: ArrayList<AllCountryDataModl?>,
     var view: View
 ) : RecyclerView.Adapter<InfoAdapter.ItemViewHolder>() {
+
     var typePostIso = 1
     var typeAdsIso = 0
     var emptyIso = 2

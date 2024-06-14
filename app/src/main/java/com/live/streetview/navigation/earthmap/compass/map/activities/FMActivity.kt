@@ -25,6 +25,7 @@ import com.live.streetview.navigation.earthmap.compass.map.Ads.StreetViewAppSoni
 import com.live.streetview.navigation.earthmap.compass.map.Ads.StreetViewAppSoniMyAppAds.loadSmartToolsBannerForMainMediation
 import com.live.streetview.navigation.earthmap.compass.map.Ads.StreetViewAppSoniMyAppShowAds.logAnalyticsForClicks
 import com.live.streetview.navigation.earthmap.compass.map.Ads.StreetViewAppSoniMyAppShowAds.mediationBackPressedSimpleStreetViewLocation
+import com.live.streetview.navigation.earthmap.compass.map.Constants
 import com.live.streetview.navigation.earthmap.compass.map.FM.FMApiInterface
 import com.live.streetview.navigation.earthmap.compass.map.FM.FMRetrofitInstance
 import com.live.streetview.navigation.earthmap.compass.map.InfoRetrofitInstamce.RetrofitClientforInfoCountryData
@@ -88,6 +89,7 @@ class FMActivity : AppCompatActivity(), RadioClickCallBack {
         userLoc = Location("service Provider")
         fusedLocationClient!!.lastLocation.addOnCompleteListener { task ->
             if (task.isSuccessful) {
+                Log.d("TAG", "onCreate: task successful")
                 location12 = task.result
                 if (location12 == null) {
                     Toast.makeText(this@FMActivity, "Permission not granted", Toast.LENGTH_LONG)
@@ -130,18 +132,25 @@ class FMActivity : AppCompatActivity(), RadioClickCallBack {
             override fun onLocationListener(location: Location?) {}
             override fun MyLocationListener(location: Location?) {}
         })
-        fMCountries
+      //  fMCountries
+        initializeSpinner()
+
         spinner?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(adapterView: AdapterView<*>?, view: View, i: Int, l: Long) {
-                val name = countryname[i]
-                getPakistandata(name)
+                val selectedItem = Constants.countries[i]
+                Log.d("TAG", "Selected Item: $selectedItem")
+                getPakistandata(selectedItem)
             }
-
             override fun onNothingSelected(adapterView: AdapterView<*>?) {}
         }
         streetViewBannerAdsSmall()
     }
-
+    private fun initializeSpinner() {
+        val countriesList = Constants.countries
+        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, countriesList)
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinner?.adapter = adapter
+    }
     private fun streetViewBannerAdsSmall() {
         val billingHelper = StreetViewAppSoniBillingHelper(this)
         val adContainer = bindingFm!!.bannerAdPlace.adContainer
@@ -202,6 +211,7 @@ class FMActivity : AppCompatActivity(), RadioClickCallBack {
                 call: Call<ArrayList<CountryFMModelInformation?>?>,
                 response: Response<ArrayList<CountryFMModelInformation?>?>
             ) {
+                Log.d("TAG", "onResponse: ${response.body()}")
                 if (response.isSuccessful) {
                     countryFMModelList = response.body()!!
                     if (countryFMModelList != null && !countryFMModelList!!.isEmpty()) {
@@ -223,6 +233,8 @@ class FMActivity : AppCompatActivity(), RadioClickCallBack {
             override fun onFailure(
                 call: Call<ArrayList<CountryFMModelInformation?>?>, t: Throwable
             ) {
+                Log.d("TAG", "onFailure: $t")
+
                 Toast.makeText(this@FMActivity, "Please check your internet connection", Toast.LENGTH_SHORT).show()
             }
         })
@@ -239,10 +251,10 @@ class FMActivity : AppCompatActivity(), RadioClickCallBack {
                     response: Response<ArrayList<AllCountryDataModl?>?>
                 ) {
                     if (response.isSuccessful) {
-                        allCountryDataModlArrayListf = response.body()!!
+                        //allCountryDataModlArrayListf = Constants.countries[]
                         // ArrayList<CountryFMModelInformation> modelCountries = response.body();
                         for (i in allCountryDataModlArrayListf!!.indices) {
-                            countryname.add(allCountryDataModlArrayListf!![i]?.name)
+                            countryname.add(Constants.countries!![i])
                         }
                         if (user_name != null) {
                             for (i in countryname.indices) {

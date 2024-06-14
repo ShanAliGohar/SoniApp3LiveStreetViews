@@ -59,10 +59,12 @@ class LocationService : Service(), LocationListener, GoogleApiClient.ConnectionC
     }
 
     protected fun stopLocationUpdates() {
-        LocationServices.FusedLocationApi.removeLocationUpdates(
-            mGoogleApiClient!!, this
-        )
-        distance = 0.0
+        if (mGoogleApiClient != null && mGoogleApiClient!!.isConnected) {
+            LocationServices.FusedLocationApi.removeLocationUpdates(
+                mGoogleApiClient!!, this
+            )
+            distance = 0.0
+        }
     }
 
     override fun onConnectionSuspended(i: Int) {}
@@ -118,7 +120,9 @@ class LocationService : Service(), LocationListener, GoogleApiClient.ConnectionC
 
     override fun onUnbind(intent: Intent): Boolean {
         stopLocationUpdates()
-        if (mGoogleApiClient!!.isConnected) mGoogleApiClient!!.disconnect()
+        if (mGoogleApiClient != null && mGoogleApiClient!!.isConnected) {
+            mGoogleApiClient!!.disconnect()
+        }
         lStart = null
         lEnd = null
         distance = 0.0

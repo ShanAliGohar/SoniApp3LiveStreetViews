@@ -21,6 +21,7 @@ class AdmobCollapsiveAd {
 
     private val AD_TAG = "AdsInformation"
 
+
     @SuppressLint("VisibleForTests")
     fun loadCollapseBannerAds(
         activity: Activity?,
@@ -32,7 +33,10 @@ class AdmobCollapsiveAd {
         isInternetConnected: Boolean,
         bannerCallBack: BannerCallBack
     ) {
+
+
         activity?.let { mActivity ->
+
             try {
                 if (isInternetConnected && adEnable != 0 && isAppPurchased && admobAdaptiveIds.isNotEmpty()) {
                     if (!mActivity.isDestroyed && !mActivity.isFinishing) {
@@ -125,7 +129,9 @@ class AdmobCollapsiveAd {
                     bannerCallBack.onAdFailedToLoad("adEnable = $adEnable, isAppPurchased = $isAppPurchased")
 
                 }
-            } catch (ex: Exception) {
+            }
+
+            catch (ex: Exception) {
                 adsPlaceHolder.removeAllViews()
                 adsPlaceHolder.visibility = View.GONE
                 Log.e(AD_TAG, "${ex.message}")

@@ -53,10 +53,15 @@ class DistanceCalculatorActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val ctx = applicationContext
-        Configuration.getInstance().load(ctx, PreferenceManager.getDefaultSharedPreferences(ctx))
-        binding = ActivityDistanceCalculatorBinding.inflate(
-            layoutInflater
-        )
+        val prefs = PreferenceManager.getDefaultSharedPreferences(ctx)
+
+        if (prefs != null) {
+            Configuration.getInstance().load(ctx, prefs)
+        } else {
+            Toast.makeText(this, "Failed to load configuration", Toast.LENGTH_SHORT).show()
+        }
+
+        binding = ActivityDistanceCalculatorBinding.inflate(layoutInflater)
         setContentView(binding!!.root)
         this.onBackPressedDispatcher.addCallback(onBackPressedCallback)
         list = ArrayList<GeoPoint>()

@@ -47,7 +47,6 @@ import com.streetview.navigation.liveearth.satellite.hotelbooking.helper.OsmHelp
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Dispatchers.IO
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.osmdroid.api.IMapController
@@ -253,7 +252,7 @@ class LiveEarthMapActivity : AppCompatActivity() {
             bindingLiveEarth!!.mapLayerLayout.visibility = View.GONE
         }
         bindingLiveEarth!!.satelliteMap.setOnClickListener {
-            OsmHelper.bingMapStyle(bindingLiveEarth!!.liveearthmap)
+            OsmHelper.mapStyle(bindingLiveEarth!!.liveearthmap)
             bindingLiveEarth!!.mapLayerLayout.visibility = View.GONE
         }
         bindingLiveEarth!!.normalMapStyle.setOnClickListener {
@@ -327,7 +326,10 @@ class LiveEarthMapActivity : AppCompatActivity() {
                     lat = locationLiveEarthMap!!.latitude
                     lng = locationLiveEarthMap!!.longitude
                     initializeMap(lat, lng)
-                    myliveearthloc()
+
+                    CoroutineScope(Dispatchers.IO).launch{
+                        myliveearthloc()
+                    }
                     Log.d(
                         ContentValues.TAG,
                         "onComplete: " + locationLiveEarthMap!!.latitude + "," + locationLiveEarthMap!!.longitude
@@ -354,17 +356,20 @@ class LiveEarthMapActivity : AppCompatActivity() {
     }
 
 
-    private fun myliveearthloc() {
-
+    private suspend fun myliveearthloc() {
         try {
             val geo = Geocoder(this@LiveEarthMapActivity.applicationContext, Locale.getDefault())
-            val addresses = geo.getFromLocation(lat, lng, 4)
+            val addresses = withContext(Dispatchers.IO) {
+                geo.getFromLocation(lat, lng, 4)
+            }
 
             //latituteField.setText("Loading...");
             if (addresses != null && addresses.size > 0) {
                 val locality = addresses[0].getAddressLine(0)
                 text1 = locality
-                textCurrentLiveLocLiveEarth!!.text = locality
+                withContext(Dispatchers.Main) {
+                    textCurrentLiveLocLiveEarth?.text = locality
+                }
                 val country = addresses[0].countryName
                 val state = addresses[0].adminArea
                 val sub_admin = addresses[0].subAdminArea

@@ -130,6 +130,9 @@ class MainActivity : AppCompatActivity(), RadioClickCallBack, Animation.Animatio
         )
 
         setContentView(bindingmain!!.root)
+
+        StreetViewAppSoniMyAppAds.preLoadAds(this)
+
         sharedPreferencesHelper = SharedPreferencesHelper(this)
         // rewardedadshow = new MyRewardedAd();
         preferences = getSharedPreferences(packageName, MODE_PRIVATE)
@@ -161,6 +164,7 @@ class MainActivity : AppCompatActivity(), RadioClickCallBack, Animation.Animatio
         val obj = GPSONOFF()
         obj.gpsONOFF(this)
         iniAlMainId()
+
         askNotificationPermission()
 
         loadCollapseBanner()
@@ -450,7 +454,11 @@ class MainActivity : AppCompatActivity(), RadioClickCallBack, Animation.Animatio
             }
         }
         constraintLayoutHomeGps!!.setOnClickListener {
-            drawerLayout!!.close()
+            try {
+                drawerLayout!!.close()
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
             //                StreetViewAppSoniMyAppShowAds.setFirstShow(false);
                 //
                 if (!checkPermission()) {
@@ -502,7 +510,11 @@ class MainActivity : AppCompatActivity(), RadioClickCallBack, Animation.Animatio
         }
         constraintLayoutPremium = findViewById(R.id.constraintLayoutPremium)
         constraintLayoutPremium?.setOnClickListener(View.OnClickListener {
-            drawerLayout!!.close()
+            try {
+                drawerLayout!!.close()
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
             omarStreetViewPurchaseHelper!!.purchaseLiveEarthLocationAdsPackage()
             // Toast.makeText(MainActivity.this, "click", Toast.LENGTH_SHORT).show();
         })
@@ -516,7 +528,11 @@ class MainActivity : AppCompatActivity(), RadioClickCallBack, Animation.Animatio
         onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                 if (drawerLayout!!.isDrawerOpen(Gravity.LEFT)) {
-                    drawerLayout!!.close()
+                    try {
+                        drawerLayout!!.close()
+                    } catch (e: Exception) {
+                        e.printStackTrace()
+                    }
                 }
                 val dialogBuilder = AlertDialog.Builder(this@MainActivity)
                 // ...Irrelevant code for customizing the buttons and title
@@ -668,7 +684,11 @@ class MainActivity : AppCompatActivity(), RadioClickCallBack, Animation.Animatio
             }
         }
         dialog.show()
-        drawerLayout!!.close()
+        try {
+            drawerLayout!!.close()
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
     }
 
     private val toolData: Unit
@@ -690,7 +710,7 @@ class MainActivity : AppCompatActivity(), RadioClickCallBack, Animation.Animatio
             modelClasses!!.add(list)
             //        modelClasses.add(list2);
             modelClasses!!.add(list3)
-            modelClasses!!.add(list4)
+        //    modelClasses!!.add(list4)
             modelClasses!!.add(list5)
             modelClasses!!.add(list6)
             modelClasses!!.add(list8)
@@ -987,41 +1007,33 @@ class MainActivity : AppCompatActivity(), RadioClickCallBack, Animation.Animatio
 
             5 -> {
 
-//                        StreetViewAppSoniMyAppShowAds.setFirstShow(false);
+/*//                        StreetViewAppSoniMyAppShowAds.setFirstShow(false);
                 logAnalyticsForClicks("StreetViewMainScreenOnClickCountryInfoActivity", this)
                 val intent3 = Intent(this, CountryInfoActivity::class.java)
                 meidationForClickSimpleSmartToolsLocation(
                     this,
                     StreetViewAppSoniMyAppAds.admobInterstitialAd,
-
                     intent3,
                     bindingmain!!.whiteView
-                )
+                )*/
+//////////// this were code for position 6 before removing country info
+                if (!checkPermission()){
+                    requestPermission()
+                }else{
+                    logAnalyticsForClicks("StreetViewMainScreenOnClickAltimeter", this)
+                    val intent3 = Intent(this, AltimeterActivity::class.java)
+                    meidationForClickSimpleSmartToolsLocation(
+                        this,
+                        StreetViewAppSoniMyAppAds.admobInterstitialAd,
+
+                        intent3,
+                        bindingmain!!.whiteView
+                    )
+                }
             }
 
             6 -> {
-                    if (!checkPermission()){
-                        requestPermission()
-                    }else{
-                        logAnalyticsForClicks("StreetViewMainScreenOnClickAltimeter", this)
-                        val intent3 = Intent(this, AltimeterActivity::class.java)
-                        meidationForClickSimpleSmartToolsLocation(
-                            this,
-                            StreetViewAppSoniMyAppAds.admobInterstitialAd,
 
-                            intent3,
-                            bindingmain!!.whiteView
-                        )
-                    }
-//                        StreetViewAppSoniMyAppShowAds.setFirstShow(false);
-
-            }
-
-            7 -> {
-
-                /*
-                        radioClickCallBack.callBackForPermissionChecking("compass");
-*/
 //                        StreetViewAppSoniMyAppShowAds.setFirstShow(false);
                 logAnalyticsForClicks("StreetViewMainScreenOnClickNewCompassActivity", this)
                 val intent4 = Intent(this, NewCompassActivity::class.java)
@@ -1034,9 +1046,7 @@ class MainActivity : AppCompatActivity(), RadioClickCallBack, Animation.Animatio
                 )
             }
 
-            8 -> {
-
-//                        StreetViewAppSoniMyAppShowAds.setFirstShow(false);
+            7 -> {
                 logAnalyticsForClicks("StreetViewMainScreenOnClickSpeedMeterActivity", this)
                 val intent5 = Intent(this, SpeedMeterActivity::class.java)
                 meidationForClickSimpleSmartToolsLocation(
@@ -1046,7 +1056,18 @@ class MainActivity : AppCompatActivity(), RadioClickCallBack, Animation.Animatio
                     intent5,
                     bindingmain!!.whiteView
                 )
+                /*
+                        radioClickCallBack.callBackForPermissionChecking("compass");
+*/
+//                        StreetViewAppSoniMyAppShowAds.setFirstShow(false);
+
             }
+
+/*            8 -> {
+
+//                        StreetViewAppSoniMyAppShowAds.setFirstShow(false);
+
+            }*/
 
             else -> {}
         }

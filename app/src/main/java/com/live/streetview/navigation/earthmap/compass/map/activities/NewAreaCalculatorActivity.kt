@@ -37,7 +37,6 @@ import org.osmdroid.api.IMapController
 import org.osmdroid.config.Configuration
 import org.osmdroid.events.MapEventsReceiver
 import org.osmdroid.tileprovider.tilesource.OnlineTileSourceBase
-import org.osmdroid.tileprovider.tilesource.bing.BingMapTileSource
 import org.osmdroid.util.GeoPoint
 import org.osmdroid.views.CustomZoomButtonsController
 import org.osmdroid.views.overlay.MapEventsOverlay
@@ -359,18 +358,7 @@ class NewAreaCalculatorActivity : AppCompatActivity() {
         }
     }
 
-    fun bingMap() {
-        try {
-            BingMapTileSource.setBingKey("AjukzouGzlTbAOOYdr7bGmH0D18glvh9blWpaeu817HrsBSDwK56AYOtQCw8EXFW")
-            val bing = BingMapTileSource(null)
-            bing.style = BingMapTileSource.IMAGERYSET_AERIALWITHLABELS
-            bing.initMetaData()
-            binding!!.mapView.setTileSource(bing)
-            mapController = binding!!.mapView.controller
-        } catch (e: NullPointerException) {
 
-        }
-    }
 
     override fun onResume() {
         try {
@@ -434,12 +422,13 @@ class NewAreaCalculatorActivity : AppCompatActivity() {
 
     private val onBackPressedCallback = object : OnBackPressedCallback(true) {
         override fun handleOnBackPressed() {
-            StreetViewAppSoniMyAppShowAds.logAnalyticsForClicks("StreetViewAreaCalculatorOnExit", this@NewAreaCalculatorActivity)
 
+            StreetViewAppSoniMyAppShowAds.logAnalyticsForClicks("StreetViewAreaCalculatorOnExit", this@NewAreaCalculatorActivity)
             StreetViewAppSoniMyAppShowAds.mediationBackPressedSimpleStreetViewLocation(
                 this@NewAreaCalculatorActivity,
                 StreetViewAppSoniMyAppAds.admobInterstitialAd,
                 binding!!.whiteView
+
             )
         }
     }

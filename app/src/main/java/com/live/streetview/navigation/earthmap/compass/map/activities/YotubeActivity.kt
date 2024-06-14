@@ -1,5 +1,4 @@
 package com.live.streetview.navigation.earthmap.compass.map.activities
-
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
@@ -9,25 +8,33 @@ import com.live.streetview.navigation.earthmap.compass.map.R
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class YotubeActivity : AppCompatActivity() {
     private var youTubePlayerView: YouTubePlayerView? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_yotube)
-        logAnalyticsForClicks(
-            "StreetViewYotubeActivityPlayVideoOnCreate",
-            this
-        )
+        logAnalyticsForClicks("StreetViewYotubeActivityPlayVideoOnCreate", this)
         val link = intent.getStringExtra("vedlink")
         Log.d("TAG", "onCreate: $link")
         youTubePlayerView = findViewById(R.id.youtubePlayerView)
         lifecycle.addObserver(youTubePlayerView!!)
+
+        lifecycleScope.launch(Dispatchers.Main) {
+            loadYoutubeVideo(link)
+        }
+    }
+
+    private suspend fun loadYoutubeVideo(link: String?) {
         youTubePlayerView?.addYouTubePlayerListener(object : AbstractYouTubePlayerListener() {
             override fun onReady(youTubePlayer: YouTubePlayer) {
                 youTubePlayer.loadVideo(link!!, 0f)
             }
         })
+
         /*webView = findViewById(R.id.webView);
         webView.getSettings().setJavaScriptEnabled(true);
         webView.setWebViewClient(new WebViewClient());

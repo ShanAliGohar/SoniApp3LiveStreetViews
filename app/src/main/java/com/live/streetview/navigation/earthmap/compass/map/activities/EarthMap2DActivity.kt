@@ -12,14 +12,12 @@ import android.os.Bundle
 import android.preference.PreferenceManager
 import android.util.Log
 import android.view.View
-import android.view.animation.AnimationUtils
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
-import androidx.activity.addCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
@@ -27,7 +25,6 @@ import com.google.android.gms.ads.AdView
 import com.live.streetview.navigation.earthmap.compass.map.Ads.StreetViewAppSoniBillingHelper
 import com.live.streetview.navigation.earthmap.compass.map.Ads.StreetViewAppSoniMyAppAds
 import com.live.streetview.navigation.earthmap.compass.map.Ads.StreetViewAppSoniMyAppShowAds
-import com.live.streetview.navigation.earthmap.compass.map.MainActivity
 import com.live.streetview.navigation.earthmap.compass.map.R
 import com.live.streetview.navigation.earthmap.compass.map.activities.osmNavigation.MyLocationListener
 import com.live.streetview.navigation.earthmap.compass.map.activities.osmNavigation.NavigationActivity
@@ -36,7 +33,6 @@ import com.live.streetview.navigation.earthmap.compass.map.activities.utils.Loca
 import com.live.streetview.navigation.earthmap.compass.map.activities.utils.OSMTileSourceFixed
 import com.live.streetview.navigation.earthmap.compass.map.activities.utils.RepoLocation
 import com.live.streetview.navigation.earthmap.compass.map.databinding.ActivityEarthMap2DactivityBinding
-import com.live.streetview.navigation.earthmap.compass.map.databinding.MapLayerDialogBinding
 import com.streetview.navigation.liveearth.satellite.hotelbooking.helper.OsmHelper
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -48,7 +44,6 @@ import org.osmdroid.bonuspack.routing.RoadManager
 import org.osmdroid.config.Configuration
 import org.osmdroid.tileprovider.tilesource.MapBoxTileSource
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory
-import org.osmdroid.tileprovider.tilesource.bing.BingMapTileSource
 import org.osmdroid.util.GeoPoint
 import org.osmdroid.views.MapView
 import org.osmdroid.views.overlay.Marker
@@ -82,6 +77,7 @@ class EarthMap2DActivity : AppCompatActivity() {
     lateinit var marker: Marker
     private var searchedPlaceMarker: Marker? = null
 
+    var currentLocationMarker : Marker? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Configuration.getInstance().load(
@@ -233,7 +229,7 @@ class EarthMap2DActivity : AppCompatActivity() {
             binding!!.mapLayerLayout.visibility = View.GONE
         }
         binding!!.satelliteMap.setOnClickListener {
-            OsmHelper.bingMapStyle(binding!!.map)
+            OsmHelper.mapStyle(binding!!.map)
             binding!!.mapLayerLayout.visibility = View.GONE
         }
         binding!!.normalMapStyle.setOnClickListener {
@@ -292,8 +288,10 @@ class EarthMap2DActivity : AppCompatActivity() {
 
         if (isInternetAvailable(this)) {
 
-            val address = getAddressFromLocation(lat, Long)
-            addressTextView.text = address
+          CoroutineScope(Dispatchers.Main).launch {
+                val address = getAddressFromLocation(lat, Long)
+                addressTextView.text = address
+            }
         } else Toast.makeText(this, "Connect to Internet", Toast.LENGTH_SHORT).show()
 
         // Create custom info window
@@ -351,112 +349,106 @@ class EarthMap2DActivity : AppCompatActivity() {
         }
     }
 
-    private fun getAddressFromLocation(lat: Double, Long: Double): String {
-        val geocoder = Geocoder(this, Locale.getDefault())
+    private suspend fun getAddressFromLocation(lat: Double, lon: Double): String = withContext(Dispatchers.IO) {
+        val geocoder = Geocoder(this@EarthMap2DActivity, Locale.getDefault())
         try {
-            val addressList = geocoder.getFromLocation(lat, Long, 1)
-            if (addressList != null) {
-                if (addressList.isNotEmpty()) {
-                    val address = addressList[0]
-                    return address.getAddressLine(0)
-                }
+            val addressList = geocoder.getFromLocation(lat, lon, 1)
+            if (addressList != null && addressList.isNotEmpty()) {
+                val address = addressList[0]
+                return@withContext address.getAddressLine(0) ?: "Unknown Address"
             }
         } catch (e: IOException) {
-            // Handle the IOException (network or service error)
             e.printStackTrace()
         }
-        return "Unknown Address"
+        return@withContext "Unknown Address"
     }
+
 
     private fun performSearch(query: String) {
         if (isInternetAvailable(this)) {
             val geocoder = Geocoder(this, Locale.getDefault())
-            try {
-                val addressList = geocoder.getFromLocationName(query, 1)
-                if (addressList != null) {
-                    if (addressList.isNotEmpty()) {
+            CoroutineScope(Dispatchers.Main).launch {
+                try {
+                    val addressList = withContext(Dispatchers.IO) { geocoder.getFromLocationName(query, 1) }
+                    if (addressList != null && addressList.isNotEmpty()) {
                         val address = addressList[0]
-                        latitudeDest = address.latitude
-                        longitudeDest = address.longitude
-                        endPoint = GeoPoint(latitudeDest, longitudeDest)
+                        val latitudeDest = address.latitude
+                        val longitudeDest = address.longitude
+                        val endPoint = GeoPoint(latitudeDest, longitudeDest)
 
                         // Remove the previous search marker if it exists
-                        if (searchedPlaceMarker != null) {
-                            binding!!.map.overlays.remove(searchedPlaceMarker)
+                        searchedPlaceMarker?.let {
+                            binding!!.map.overlays.remove(it)
                         }
 
                         // Add a marker for the searched place
-                        searchedPlaceMarker = Marker(binding!!.map)
-                        searchedPlaceMarker?.position = GeoPoint(latitudeDest, longitudeDest)
-                        // Customize the marker if needed
-                        // ...
-                        val icon =
-                            BitmapFactory.decodeResource(resources, R.drawable.marker_default)
-                        com.streetview.navigation.liveearth.satellite.hotelbooking.helper.OsmHelper.setMarkerIconAsPhoto(
-                            this,
-                            searchedPlaceMarker!!,
-                            icon!!
-                        )
-                        markerLat = searchedPlaceMarker?.position?.latitude!!
-                        markerLng = searchedPlaceMarker?.position?.longitude!!
-                        endPointMarker = GeoPoint(markerLat, markerLng)
-                        binding!!.map.overlays.add(searchedPlaceMarker)
+                        searchedPlaceMarker = Marker(binding!!.map).apply {
+                            position = GeoPoint(latitudeDest, longitudeDest)
+                            val icon = BitmapFactory.decodeResource(resources, R.drawable.marker_default)
+                            com.streetview.navigation.liveearth.satellite.hotelbooking.helper.OsmHelper.setMarkerIconAsPhoto(
+                                this@EarthMap2DActivity, this, icon
+                            )
+                            markerLat = position.latitude
+                            markerLng = position.longitude
+                            endPointMarker = GeoPoint(markerLat, markerLng)
+                            binding!!.map.overlays.add(this)
 
-                        val infoWindowView =
-                            layoutInflater.inflate(R.layout.custom_marker_layout, null)
+                            val infoWindowView = layoutInflater.inflate(R.layout.custom_marker_layout, null)
+                            val addressTextView = infoWindowView.findViewById<TextView>(R.id.addressTextView)
 
-                        val addressTextView =
-                            infoWindowView.findViewById<TextView>(R.id.addressTextView)
-
-                        addressTextView.text = getAddressFromLocation(latitudeDest, longitudeDest)
-                        // Replace with your address retrieval logic
-                        val infoWindow = object : InfoWindow(infoWindowView, binding!!.map) {
-                            override fun onOpen(item: Any?) {
-                                // Customization logic when the info window is opened
+                            addressTextView.text = withContext(Dispatchers.IO) {
+                                getAddressFromLocation(latitudeDest, longitudeDest)
                             }
 
-                            override fun onClose() {
-                                // Customization logic when the info window is closed
+                            val infoWindow = object : InfoWindow(infoWindowView, binding!!.map) {
+                                override fun onOpen(item: Any?) {
+                                    // Customization logic when the info window is opened
+                                }
+
+                                override fun onClose() {
+                                    // Customization logic when the info window is closed
+                                }
                             }
-                        }
-                        // Set the custom info window to the marker
-                        searchedPlaceMarker?.infoWindow = infoWindow
-                        searchedPlaceMarker?.setOnMarkerClickListener { marker, mapView ->
-                            if (marker == selectedMarker) {
-                                if (infoWindowVisible) {
-                                    hideInfoWindow(marker)
-                                    infoWindowVisible = false
+                            this.infoWindow = infoWindow  // Assign the infoWindow to the marker
+                            setOnMarkerClickListener { marker, mapView ->
+                                if (marker == selectedMarker) {
+                                    if (infoWindowVisible) {
+                                        hideInfoWindow(marker)
+                                        infoWindowVisible = false
+                                    } else {
+                                        showInfoWindow(marker)
+                                        infoWindowVisible = true
+                                    }
                                 } else {
                                     showInfoWindow(marker)
+                                    hideInfoWindow(selectedMarker)
+                                    selectedMarker = marker
                                     infoWindowVisible = true
                                 }
-                            } else {
-                                showInfoWindow(marker)
-                                hideInfoWindow(selectedMarker)
-                                selectedMarker = marker
-                                infoWindowVisible = true
+                                true
                             }
-                            true
                         }
 
                         binding!!.map.controller.animateTo(GeoPoint(latitudeDest, longitudeDest))
-
                         binding!!.map.invalidate()
                     } else {
                         // Handle when no address is found
+                        Toast.makeText(this@EarthMap2DActivity, "Address not found", Toast.LENGTH_SHORT).show()
                     }
+                } catch (e: IOException) {
+                    e.printStackTrace()
+                    Toast.makeText(this@EarthMap2DActivity, "Geocoder service not available", Toast.LENGTH_SHORT).show()
                 }
-            } catch (e: IOException) {
-                e.printStackTrace()
-            }
 
-            // Hide the keyboard
-            val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-            imm.hideSoftInputFromWindow(binding!!.sercheditText.windowToken, 0)
+                // Hide the keyboard
+                val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                imm.hideSoftInputFromWindow(binding!!.sercheditText.windowToken, 0)
+            }
         } else {
             Toast.makeText(this, "No internet connection available", Toast.LENGTH_SHORT).show()
         }
     }
+
 
     fun isInternetAvailable(context: Context): Boolean {
         val connectivityManager =
@@ -505,8 +497,12 @@ class EarthMap2DActivity : AppCompatActivity() {
                         binding!!.map.overlays.add(roadOverlay)
 
                         // Add marker for the current location
-                        val currentLocationMarker = Marker(binding!!.map)
-                        currentLocationMarker.position = GeoPoint(latitude, longitude)
+                        if (binding?.map != null) {
+                             currentLocationMarker = Marker(binding!!.map)
+                            currentLocationMarker?.position = GeoPoint(latitude, longitude)
+                        } else {
+                            Log.e("MapError", "Binding or map is null. Ensure binding and map are properly initialized.")
+                        }
 
                         val currentInfoWindowView =
                             layoutInflater.inflate(R.layout.custom_marker_layout, null)
@@ -525,12 +521,12 @@ class EarthMap2DActivity : AppCompatActivity() {
                                 }
                             }
 
-                        currentLocationMarker.infoWindow = currentInfoWindow
+                        currentLocationMarker?.infoWindow = currentInfoWindow
                         val currentMarkerIcon =
                             BitmapFactory.decodeResource(resources, R.drawable.currentlocarion)
                         com.streetview.navigation.liveearth.satellite.hotelbooking.helper.OsmHelper.setMarkerIconAsPhoto(
                             this@EarthMap2DActivity,
-                            currentLocationMarker,
+                            currentLocationMarker!!,
                             currentMarkerIcon!!
                         )
                         binding!!.map.overlays.add(currentLocationMarker)

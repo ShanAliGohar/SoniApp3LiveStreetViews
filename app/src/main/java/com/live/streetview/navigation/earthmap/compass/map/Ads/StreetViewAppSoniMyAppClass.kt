@@ -24,6 +24,7 @@ import kotlinx.coroutines.launch
 class StreetViewAppSoniMyAppClass : Application() {
     private var adsDatabaseReferenceStreetView: DatabaseReference? = null
     private var mFirebaseRemoteConfig: FirebaseRemoteConfig? = null
+
     override fun onCreate() {
         super.onCreate()
         instance = this
@@ -32,14 +33,17 @@ class StreetViewAppSoniMyAppClass : Application() {
         } catch (e: Exception) {
             Log.d("msg", "firebase exception:" + e.message)
         }
+
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        remoteConfigDataByGohar()
         //  StreetViewLoadAds.insertADSToFirebase(this);
 //        AppLovinSdk.getInstance(this).mediationProvider = "max"
 //        AppLovinSdk.initializeSdk(this)
 //        {
 //            //  AppLovin SDK is initialized, start loading ads
-//            Log.d("ConstantAdsLoadAds:", "onInitializationComplete: ===Init Max")
+//            Log.d("ConstantAdsLoaondAds:", "onInitializationComplete: ===Init Max")
 //        }
+
         cloneAppOpenAdsManager =
             StreetViewAppSoniOpenAdsManager(this)
     //    AudienceNetworkAds.initialize(this)
@@ -48,10 +52,10 @@ class StreetViewAppSoniMyAppClass : Application() {
         adsDatabaseReferenceStreetView =
             FirebaseDatabase.getInstance().getReference("Live_StreetView")
         CoroutineScope(Dispatchers.IO).launch {
-             getDataFromFirebase()
+          //   getDataFromFirebase()
         }
 //        addModelToFirebase(this)
-        remoteConfigData()
+    //    remoteConfigData()
     }
 
     /* public static void stopHandlerAndRestart() {
@@ -117,7 +121,7 @@ class StreetViewAppSoniMyAppClass : Application() {
                     StreetViewAppSoniMyAppAds.ctr_control = model.isCtr_control
                     StreetViewAppSoniMyAppAds.next_ads_time = model.next_ads_time.toLong()
                     StreetViewAppSoniMyAppAds.current_counter = model.current_counter
-//                    StreetViewAppSoniMyAppAds.adShowAfter = model.adShowAfter
+                   StreetViewAppSoniMyAppAds.adShowAfter = model.adShowAfter
                     Log.i(
                         "LocationTracking",
                         "Splash value : " + model.isIs_splash_show
@@ -186,4 +190,33 @@ class StreetViewAppSoniMyAppClass : Application() {
                 }
             }
     }
+
+    private fun remoteConfigDataByGohar()
+    {
+        mFirebaseRemoteConfig = Firebase.remoteConfig
+        val configSettings = remoteConfigSettings {
+            minimumFetchIntervalInSeconds = 3
+        }
+        mFirebaseRemoteConfig!!.setConfigSettingsAsync(configSettings)
+    //    mFirebaseRemoteConfig?.setDefaultsAsync(R.xml.remote_config_defaults)
+        mFirebaseRemoteConfig!!.fetchAndActivate()
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    val updated = task.result
+                    Log.d("TAG", "Config params updated: $updated")
+
+                    StreetViewAppSoniMyAppAds.bannerNativeController =
+                        mFirebaseRemoteConfig!!.getString("banner_native_controller")
+                    Log.d(
+                        "TAG",
+                        "remoteConfigData: banner_native_controller ${mFirebaseRemoteConfig!!.getString("banner_native_controller")}"
+                    )
+                } else {
+                    Log.d("TAG", "Config is not Successful")
+
+                    StreetViewAppSoniMyAppAds.bannerNativeController = "0"
+                }
+            }
+    }
+
 }

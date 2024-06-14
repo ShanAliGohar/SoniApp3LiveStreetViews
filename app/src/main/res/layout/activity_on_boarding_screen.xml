@@ -29,15 +29,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:layout_marginBottom="20sp"
+        android:layout_marginTop="90dp"
         app:dotColor="#2679C799"
         app:dotCount="3"
         app:dotSelectedColor="#2679C7"
         app:dotSize="16dp"
         app:dotSpacing="4dp"
-        app:layout_constraintBottom_toTopOf="@id/adsNative"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView56" />
 
     <TextView
         android:id="@+id/nextBtn"
@@ -71,14 +71,35 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/dots_indicator" />
 
+
     <include
         android:id="@+id/adsNative"
         layout="@layout/street_view_native_admob_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/_10sdp"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
 
+        />
+
+    <FrameLayout
+        android:id="@+id/bannerID"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:maxHeight="70dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_max="70dp"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <include
+            layout="@layout/loading_ad"
+            android:layout_width="match_parent"
+            android:layout_height="70dp" />
+    </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

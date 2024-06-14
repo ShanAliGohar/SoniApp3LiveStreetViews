@@ -16,7 +16,6 @@ import com.google.android.gms.ads.MobileAds
 import com.google.firebase.messaging.FirebaseMessaging
 import com.live.streetview.navigation.earthmap.compass.map.Ads.StreetViewAppOpenSplashAdsManager.Companion.appOpenAd
 import com.live.streetview.navigation.earthmap.compass.map.Ads.StreetViewAppSoniBillingHelper
-import com.live.streetview.navigation.earthmap.compass.map.Ads.StreetViewAppSoniMyAppAds.preLoadAds
 import com.live.streetview.navigation.earthmap.compass.map.Ads.StreetViewAppSoniMyAppClass.Companion.liveEarthAppOpenSplashAdsManager
 import com.live.streetview.navigation.earthmap.compass.map.Ads.StreetViewAppSoniMyAppShowAds.logAnalyticsForClicks
 import com.live.streetview.navigation.earthmap.compass.map.MainActivity
@@ -56,7 +55,6 @@ class SplashActivity : AppCompatActivity() {
             .subscribeToTopic("com.live.streetview.navigation.earthmap.compass.map")
 
         loadAppOpen()
-        preLoadAds(this)
        // preloadMax(this)
 
 
@@ -69,7 +67,7 @@ class SplashActivity : AppCompatActivity() {
                 Log.d("AppOpenSplashLogNormal:", "loadAppOpen:  on timer base")
             }
             Log.d("AppOpenSplashLogNormal:", "loadAppOpen: called without ad loading on timer base")
-        }, 12000)
+        }, 12000)//12000
     }
 
     private fun loadAppOpen() {
@@ -143,11 +141,9 @@ class SplashActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
-
     }
 
     fun saveBooleanToPrefs(value: Boolean) {
-
         val sharedPreferences: SharedPreferences = getSharedPreferences(PREFS_NAME, MODE_PRIVATE)
         val editor: SharedPreferences.Editor = sharedPreferences.edit()
         editor.putBoolean(BOOLEAN_KEY, value)

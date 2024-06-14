@@ -12,7 +12,8 @@
     <uses-permission android:name="com.google.android.gms.permission.AD_ID" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         android:maxSdkVersion="32" />
     <uses-permission
         android:name="android.permission.READ_EXTERNAL_STORAGE"
@@ -38,17 +39,21 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".activities.OnBoardingScreen"
-            android:exported="false" />
-        <activity
-            android:name=".gdpr.ConsentActivity"
-            android:exported="true">
+            android:name=".activities.game.TicTacToe"
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".activities.OnBoardingScreen"
+            android:exported="false" />
+        <activity
+            android:name=".gdpr.ConsentActivity"
+            android:exported="true"/>
+
 
         <receiver
             android:name=".fuelmanager.utils.AlarmReceiver"
@@ -220,7 +225,6 @@
         <activity
             android:name=".activities.NewAreaCalculatorActivity"
             android:exported="false">
-
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -251,7 +255,7 @@
         <activity
             android:name=".activities.SplashActivity"
             android:exported="false"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activities.YotubeActivity"
             android:exported="false" />
@@ -337,6 +341,5 @@
         <service android:name=".MyServiceKt" />
         <service android:name=".location.LocationService" />
     </application>
-
 
 </manifest>

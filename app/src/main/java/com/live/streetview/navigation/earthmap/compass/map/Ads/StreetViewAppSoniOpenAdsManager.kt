@@ -109,6 +109,7 @@ class StreetViewAppSoniOpenAdsManager(private val myApplication: StreetViewAppSo
     /**
      * Shows the ad if one isn't already showing.
      */
+
     fun showAdIfAvailable() {
         // Only show ad if there is not already an app open ad currently showing
         // and an ad is available.
@@ -143,6 +144,8 @@ class StreetViewAppSoniOpenAdsManager(private val myApplication: StreetViewAppSo
     /**
      * ActivityLifecycleCallback methods
      */
+
+    
     override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {}
     override fun onActivityStarted(activity: Activity) {
         makerAppCurrentActivity = activity

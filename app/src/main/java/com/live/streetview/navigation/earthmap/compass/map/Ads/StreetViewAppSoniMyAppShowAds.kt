@@ -6,6 +6,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.view.View
+import com.google.android.gms.ads.AdError
 import com.google.android.gms.ads.FullScreenContentCallback
 import com.google.android.gms.ads.interstitial.InterstitialAd
 import com.google.firebase.analytics.FirebaseAnalytics
@@ -40,6 +41,12 @@ object StreetViewAppSoniMyAppShowAds {
                         //  view.visibility = View.VISIBLE
 
                     }
+
+                    override fun onAdFailedToShowFullScreenContent(p0: AdError) {
+                        super.onAdFailedToShowFullScreenContent(p0)
+
+                    }
+
                 }
             }
             /* else if (maxInterstitialAd != null && maxInterstitialAd.isReady) {
@@ -74,12 +81,12 @@ object StreetViewAppSoniMyAppShowAds {
                  maxInterstitialAd.showAd()
              }*/
             else {
-                StreetViewAppSoniMyAppAds.preReLoadAds(context)
+               // StreetViewAppSoniMyAppAds.preReLoadAds(context)
                 context.finish()
                 //  Handler().postDelayed({ view.visibility = View.GONE }, 500)
             }
         } else {
-            StreetViewAppSoniMyAppAds.preReLoadAds(context)
+       //  StreetViewAppSoniMyAppAds.preReLoadAds(context)
             context.finish()
             // Handler().postDelayed({ view.visibility = View.GONE }, 500)
         }
@@ -240,6 +247,11 @@ object StreetViewAppSoniMyAppShowAds {
                         //  view.visibility = View.VISIBLE
 
                     }
+
+                    override fun onAdFailedToShowFullScreenContent(p0: AdError) {
+                        super.onAdFailedToShowFullScreenContent(p0)
+
+                    }
                 }
             }
             /* else if (maxInterstitialAd != null && maxInterstitialAd.isReady) {
@@ -276,12 +288,12 @@ object StreetViewAppSoniMyAppShowAds {
                  })
                  maxInterstitialAd.showAd()
              }*/ else {
-                StreetViewAppSoniMyAppAds.preReLoadAds(context)
+              //  StreetViewAppSoniMyAppAds.preReLoadAds(context)
                 context.startActivity(intent)
                 //  Handler().postDelayed({ view.visibility = View.GONE }, 500)
             }
         } else {
-            StreetViewAppSoniMyAppAds.preReLoadAds(context)
+         //   StreetViewAppSoniMyAppAds.preReLoadAds(context)
             context.startActivity(intent)
             //  Handler().postDelayed({ view.visibility = View.GONE }, 500)
         }

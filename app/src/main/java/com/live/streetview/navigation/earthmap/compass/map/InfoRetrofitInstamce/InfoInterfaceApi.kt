@@ -5,7 +5,7 @@ import retrofit2.Call
 import retrofit2.http.GET
 
 interface InfoInterfaceApi {
-    @get:GET("v2/all")
+    @get:GET("v3.1/all")
     val data: Call<ArrayList<AllCountryDataModl?>?>?
 
     companion object {

@@ -8,7 +8,7 @@ import java.util.concurrent.TimeUnit
 
 object FMRetrofitInstance {
     private const val BASE_URL = " https://nl1.api.radio-browser.info/"
-    private const val BASE_URL_PLACES = " https://photon.komoot.io"
+    private const val BASE_URL_PLACES = "https://photon.komoot.io"
     private var retrofitWeatherApi: Retrofit? = null
     val retrofitInstance: Retrofit?
         get() {

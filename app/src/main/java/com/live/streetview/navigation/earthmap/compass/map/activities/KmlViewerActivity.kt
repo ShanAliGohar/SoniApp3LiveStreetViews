@@ -3,6 +3,7 @@ package com.live.streetview.navigation.earthmap.compass.map.activities
 import android.app.ProgressDialog
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.content.res.Resources
 import android.graphics.drawable.BitmapDrawable
 import android.location.LocationListener
 import android.location.LocationManager
@@ -354,12 +355,17 @@ class KmlViewerActivity : AppCompatActivity(), LocationListener {
     /** save fileName locally, as KML or GeoJSON depending on the extension  */
 
     fun buildDefaultStyle(): Style {
-        val defaultKmlMarker =
+        val defaultKmlMarker = try {
             ResourcesCompat.getDrawable(resources, R.drawable.marker_kml_point, null)
-        val bitmap = (defaultKmlMarker as BitmapDrawable?)!!.bitmap
+        } catch (e: Exception) {
+            Log.d("TAG", "buildDefaultStyle: resource not found because $e")
+        }
+        if (defaultKmlMarker == null) {
+            throw Resources.NotFoundException("Drawable resource not found: marker_kml_point")
+        }
+        val bitmap = (defaultKmlMarker as BitmapDrawable).bitmap
         return Style(bitmap, -0x6fefef56, 3.0f, 0x20AA1010)
     }
-
     fun updateUIWithKml() {
         if (mKmlOverlay != null) {
             mKmlOverlay!!.closeAllInfoWindows()

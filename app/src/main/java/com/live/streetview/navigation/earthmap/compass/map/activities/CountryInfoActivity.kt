@@ -3,6 +3,7 @@ package com.live.streetview.navigation.earthmap.compass.map.activities
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.View
 import android.widget.EditText
 import android.widget.ImageView
@@ -23,6 +24,12 @@ import com.live.streetview.navigation.earthmap.compass.map.R
 import com.live.streetview.navigation.earthmap.compass.map.RetrofitInfoModel.AllCountryDataModl
 import com.live.streetview.navigation.earthmap.compass.map.adapters.InfoAdapter
 import com.live.streetview.navigation.earthmap.compass.map.databinding.ActivityCountryInfoBinding
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.TimeoutCancellationException
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withTimeout
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -102,40 +109,56 @@ class CountryInfoActivity : AppCompatActivity() {
     }
 
     private fun showflasg() {
+        // Create a CoroutineScope with a SupervisorJob and Dispatchers.Main
+        val scope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
 
-//        InfoInterfaceApi infoInterfaceApi = InfoInterfaceApi.().create(InfoInterfaceApi.class);
-        val cloudsCall = RetrofitClientforInfoCountryData.instance?.myApi?.data
-        cloudsCall?.enqueue(object : Callback<ArrayList<AllCountryDataModl?>?> {
-            override fun onResponse(
-                call: Call<ArrayList<AllCountryDataModl?>?>,
-                response: Response<ArrayList<AllCountryDataModl?>?>
-            ) {
-                if (response.isSuccessful) {
-                    mylist = response.body()!!
-                    progressBar!!.visibility = View.GONE
-                    recyclerView!!.visibility = View.VISIBLE
-                    infoAdapter =
-                        InfoAdapter(this@CountryInfoActivity, mylist, bindingInfo!!.whiteView)
-                    val gridLayoutManager1 = GridLayoutManager(this@CountryInfoActivity, 3)
-                    gridLayoutManager1.spanSizeLookup =
-                        object : GridLayoutManager.SpanSizeLookup() {
-                            override fun getSpanSize(position: Int): Int {
-                                return when (infoAdapter!!.getItemViewType(position)) {
-                                    0 -> 3
-                                    1 -> 1
-                                    2 -> 3
-                                    else -> 1
-                                }
+        // Launch a coroutine
+        scope.launch {
+            try {
+                withTimeout(40000L) { // Set a timeout of 30 seconds
+                    val cloudsCall = RetrofitClientforInfoCountryData.instance?.myApi?.data
+                    cloudsCall?.enqueue(object : Callback<ArrayList<AllCountryDataModl?>?> {
+                        override fun onResponse(
+                            call: Call<ArrayList<AllCountryDataModl?>?>,
+                            response: Response<ArrayList<AllCountryDataModl?>?>
+                        ) {
+                            Log.d("TAG", "onResponse: ${response.body()}")
+                            if (response.isSuccessful) {
+                                mylist = response.body()!!
+                                progressBar!!.visibility = View.GONE
+                                recyclerView!!.visibility = View.VISIBLE
+                                infoAdapter =
+                                    InfoAdapter(this@CountryInfoActivity, mylist, bindingInfo!!.whiteView)
+                                val gridLayoutManager1 = GridLayoutManager(this@CountryInfoActivity, 3)
+                                gridLayoutManager1.spanSizeLookup =
+                                    object : GridLayoutManager.SpanSizeLookup() {
+                                        override fun getSpanSize(position: Int): Int {
+                                            return when (infoAdapter!!.getItemViewType(position)) {
+                                                0 -> 3
+                                                1 -> 1
+                                                2 -> 3
+                                                else -> 1
+                                            }
+                                        }
+                                    }
+                                recyclerView!!.layoutManager = gridLayoutManager1
+                                recyclerView!!.adapter = infoAdapter
                             }
                         }
-                    recyclerView!!.layoutManager = gridLayoutManager1
-                    recyclerView!!.adapter = infoAdapter
+
+                        override fun onFailure(call: Call<ArrayList<AllCountryDataModl?>?>, t: Throwable) {
+                            Log.d("TAG", "onFailure: $t ")
+                        }
+                    })
                 }
+            } catch (e: TimeoutCancellationException) {
+                Log.d("TAG", "Request timed out")
+                // Handle timeout here
+            } catch (e: Exception) {
+                Log.d("TAG", "An error occurred: ${e.message}")
+                // Handle other exceptions here
             }
-            override fun onFailure(call: Call<ArrayList<AllCountryDataModl?>?>, t: Throwable) {
-                TODO("Not yet implemented")
-            }
-        })
+        }
     }
 
     private val onBackPressedCallback: OnBackPressedCallback =

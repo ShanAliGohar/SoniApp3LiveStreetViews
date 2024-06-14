@@ -21,67 +21,6 @@ import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.coroutines.NonDisposableHandle.parent
 import java.util.zip.Inflater
 
-/*class CustomSpinnerAdapterFuel(var context: Context, flags: ArrayList<AllCountryDataModl?>) :
-    BaseAdapter() {
-    var streetViewCountryInfoModelArrayList = ArrayList<AllCountryDataModl?>()
-
-    init {
-        streetViewCountryInfoModelArrayList = flags
-        
-    }
-
-    override fun getCount(): Int {
-        return streetViewCountryInfoModelArrayList.size
-    }
-    override fun getItem(position: Int): Any? {
-        return null
-    }
-
-    override fun getItemId(position: Int): Long {
-        return 0
-    }
-
-    override fun getView(position: Int, view: View, parent: ViewGroup): View {
-        var mview = view
-        mview = LayoutInflater.from(context).inflate(R.layout.custom_spinner_layout,parent,false)
-        mview?.let { itemView ->
-            val model = streetViewCountryInfoModelArrayList[position]
-            val flags = ("https://flagpedia.net/data/flags/normal/"
-                    + model?.toString()?.lowercase() + ".png")
-
-            val icon = itemView.findViewById<CircleImageView>(R.id.customSpinnerImage)
-            val names = itemView.findViewById(R.id.customSpinnerTV) as TextView
-            names.text = streetViewCountryInfoModelArrayList[position]?.toString()
-
-            Glide.with(context)
-                .load(flags)
-                .listener(object : RequestListener<Drawable?> {
-                    override fun onLoadFailed(
-                        e: GlideException?,
-                        model: Any,
-                        target: Target<Drawable?>,
-                        isFirstResource: Boolean
-                    ): Boolean {
-                        Log.d("TAG", "onLoadFailed: $e")
-                        return false
-                    }
-
-                    override fun onResourceReady(
-                        resource: Drawable?,
-                        model: Any,
-                        target: Target<Drawable?>,
-                        dataSource: DataSource,
-                        isFirstResource: Boolean
-                    ): Boolean {
-                        return false
-                    }
-                })
-                .into(icon)
-        }
-
-        return mview
-    }
-}*/
 
 class CustomSpinnerAdapterFuel(context: Context, items: ArrayList<AllCountryDataModl?>) :
     ArrayAdapter<AllCountryDataModl>(context, 0, items) {
@@ -103,7 +42,6 @@ class CustomSpinnerAdapterFuel(context: Context, items: ArrayList<AllCountryData
 
         val textViewItem = convertView!!.findViewById<TextView>(R.id.customSpinnerTV)
         textViewItem.text = getItem(position)?.name.toString()
-
 
         return convertView
     }

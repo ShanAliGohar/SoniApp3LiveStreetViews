@@ -69,6 +69,7 @@ object StreetViewAppSoniMyAppAds {
     var adClickCounter = 1
     var adShowAfter = 2
     var startCounter = 0
+    var bannerNativeController = ""
     private val adsDatabaseReferenceSmartTools =
         FirebaseDatabase.getInstance().getReference("Live_StreetView")
     private val myHandler = Handler()
@@ -228,6 +229,8 @@ object StreetViewAppSoniMyAppAds {
     @JvmStatic
     fun preLoadAds(context: Context?) {
         val billingHelper = context?.let { StreetViewAppSoniBillingHelper(it) }
+        Log.d("ConstantAdsLoadAds", "StreetViewAppSoniInterstitial preLoadAds called")
+
         if (billingHelper != null) {
             if (billingHelper.isNotAdPurchased) {
                 //admobeload
@@ -241,6 +244,7 @@ object StreetViewAppSoniMyAppAds {
                             override fun onAdLoaded(interstitialAd: InterstitialAd) {
                                 super.onAdLoaded(interstitialAd)
                                 Log.d("ConstantAdsLoadAds", "Admob loaded")
+                                Log.d("ConstantAdsLoadAds", "StreetViewAppSoniInterstitial Admob loaded")
                                 canReLoadedAdMob = true
                                 admobInterstitialAd = interstitialAd
                             }
@@ -248,12 +252,13 @@ object StreetViewAppSoniMyAppAds {
                             override fun onAdFailedToLoad(loadAdError: LoadAdError) {
                                 super.onAdFailedToLoad(loadAdError)
                                 Log.d("ConstantAdsLoadAds", "Admob Faild: $loadAdError")
+                                Log.d("ConstantAdsLoadAds", "StreetViewAppSoniInterstitial Admob Faild: $loadAdError")
                                 canReLoadedAdMob = true
                                 admobInterstitialAd = null
                             }
                         })
                 } else {
-                    Log.d("ConstantAdsLoadAds", "admobe AlReady loaded")
+                    Log.d("ConstantAdsLoadAds", "StreetViewAppSoniInterstitial admobe AlReady loaded")
                 }
             }
         }
@@ -335,13 +340,20 @@ object StreetViewAppSoniMyAppAds {
 
     fun preReLoadAds(context: Context?) {
         val billingHelper = context?.let { StreetViewAppSoniBillingHelper(it) }
+
+        Log.d("ConstantAdsLoadAds", "StreetViewAppSoniInterstitial preReLoadAds called")
+
         if (billingHelper != null) {
             if (billingHelper.isNotAdPurchased) {
                 //admobeload
                 if (admobInterstitialAd != null) {
                     Log.d("ConstantAdsLoadAds", "admobe ReAlReady loaded")
-                } else {
-                    Log.d("ConstantAdsLoadAds", "canReLoadedAdMob " + canReLoadedAdMob)
+                    Log.d("ConstantAdsLoadAds", "StreetViewAppSoniInterstitial admobe ReAlReady loaded")
+                } else
+
+                {
+
+                    Log.d("ConstantAdsLoadAds", "StreetViewAppSoniInterstitial canReLoadedAdMob " + canReLoadedAdMob)
                     canReLoadedAdMob = false
                     InterstitialAd.load(
                         context,
@@ -350,14 +362,14 @@ object StreetViewAppSoniMyAppAds {
                         object : InterstitialAdLoadCallback() {
                             override fun onAdLoaded(interstitialAd: InterstitialAd) {
                                 super.onAdLoaded(interstitialAd)
-                                Log.d("ConstantAdsLoadAds", "Admob Reloaded")
+                                Log.d("ConstantAdsLoadAds", "StreetViewAppSoniInterstitial Admob Reloaded")
                                 canReLoadedAdMob = true
                                 admobInterstitialAd = interstitialAd
                             }
 
                             override fun onAdFailedToLoad(loadAdError: LoadAdError) {
                                 super.onAdFailedToLoad(loadAdError)
-                                Log.d("ConstantAdsLoadAds", "Admob ReFaild")
+                                Log.d("ConstantAdsLoadAds", "StreetViewAppSoniInterstitial Admob ReFaild")
                                 canReLoadedAdMob = true
                                 admobInterstitialAd = null
                             }

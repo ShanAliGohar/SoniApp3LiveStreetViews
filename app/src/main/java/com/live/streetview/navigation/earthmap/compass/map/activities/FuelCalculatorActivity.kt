@@ -20,12 +20,14 @@ import com.live.streetview.navigation.earthmap.compass.map.Ads.StreetViewAppSoni
 import com.live.streetview.navigation.earthmap.compass.map.Ads.StreetViewAppSoniMyAppAds.loadSmartToolsBannerForMainMediation
 import com.live.streetview.navigation.earthmap.compass.map.Ads.StreetViewAppSoniMyAppShowAds.logAnalyticsForClicks
 import com.live.streetview.navigation.earthmap.compass.map.Ads.StreetViewAppSoniMyAppShowAds.mediationBackPressedSimpleStreetViewLocation
+import com.live.streetview.navigation.earthmap.compass.map.Constants
 import com.live.streetview.navigation.earthmap.compass.map.InfoRetrofitInstamce.RetrofitClientforInfoCountryData
 import com.live.streetview.navigation.earthmap.compass.map.R
 import com.live.streetview.navigation.earthmap.compass.map.RetrofitInfoModel.AllCountryDataModl
 import com.live.streetview.navigation.earthmap.compass.map.adapters.CustomSpinnerAdapterFlag
 import com.live.streetview.navigation.earthmap.compass.map.adapters.CustomSpinnerAdapterFuel
 import com.live.streetview.navigation.earthmap.compass.map.databinding.ActivityFuelCalculatorBinding
+import com.live.streetview.navigation.earthmap.compass.map.fuelWork.dataClasses.fuelsModel.FuelPrice
 import com.live.streetview.navigation.earthmap.compass.map.fuelmanager.nearbyplaces.pogoclasses.Parent
 import retrofit2.Call
 import retrofit2.Callback
@@ -53,11 +55,13 @@ class FuelCalculatorActivity : AppCompatActivity() {
     var pricePerlitreFuel = 0f
     var df = DecimalFormat("#.#")
     private val callbackEnabled = true
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         bindingFuel = ActivityFuelCalculatorBinding.inflate(
             layoutInflater
         )
+
         setContentView(bindingFuel!!.root)
         // initBannerFuel();
         logAnalyticsForClicks("StreetViewFuelCalculatorOnCreate", this@FuelCalculatorActivity)
@@ -86,20 +90,29 @@ class FuelCalculatorActivity : AppCompatActivity() {
         arrayAdapter!!.setDropDownViewResource(android.R.layout.simple_list_item_1)
         spindistanceFuelCal?.setAdapter(arrayAdapter)
         spindistanceFuelCal?.setSelection(0)
-        countries
-        bindingFuel!!.spinCtyflagsFuel.onItemSelectedListener =
-            object : AdapterView.OnItemSelectedListener {
-                override fun onItemSelected(
-                    parent: AdapterView<*>?,
-                    view: View,
-                    position: Int,
-                    id: Long
-                ) {
-      //          fuelPrices(modelCountryInfos.get(position).getName());
+ //       countries
+
+        val adapter = ArrayAdapter(this, R.layout.drop_down, Constants.countries)
+        adapter.setDropDownViewResource(android.R.layout.simple_list_item_1)
+        bindingFuel!!.spinCtyflagsFuel.adapter = adapter
+
+            bindingFuel!!.spinCtyflagsFuel.onItemSelectedListener =
+                object : AdapterView.OnItemSelectedListener {
+                    override fun onItemSelected(
+                        parent: AdapterView<*>?,
+                        view: View,
+                        position: Int,
+                        id: Long
+                    ) {
+                        val selectedItem = Constants.countries[position]
+                        Log.d("TAG", "Selected Item: $selectedItem")
+                           // fuelPrices(modelCountryInfos.get(position)?.name);
+                    }
+
+                    override fun onNothingSelected(parent: AdapterView<*>?) {}
                 }
 
-                override fun onNothingSelected(parent: AdapterView<*>?) {}
-            }
+
         bindingFuel!!.btCalculateFuel.setOnClickListener {
             val view = currentFocus
             if (view != null) {
@@ -157,7 +170,7 @@ class FuelCalculatorActivity : AppCompatActivity() {
         }
     }
 
-    private val countries: Unit
+/*    private val countries: Unit
         //    private void initBannerFuel() {
         private get() {
             val cloudsCall = RetrofitClientforInfoCountryData.instance?.myApi?.data
@@ -166,7 +179,8 @@ class FuelCalculatorActivity : AppCompatActivity() {
                     call: Call<ArrayList<AllCountryDataModl?>?>,
                     response: Response<ArrayList<AllCountryDataModl?>?>
                 ) {
-                    if (response.isSuccessful) {
+                    Log.d("TAG", "onResponse: ${response.body()}")
+
                         if (response.isSuccessful) {
                             modelCountryInfos = response.body()!!
                            for (i in modelCountryInfos.indices) {
@@ -178,20 +192,23 @@ class FuelCalculatorActivity : AppCompatActivity() {
                             // Sample data for spinner items
                             val items = arrayListOf("Item 1", "Item 2", "Item 3")
 
-                            val adapter = CustomSpinnerAdapterFuel(this@FuelCalculatorActivity, modelCountryInfos)
-                            bindingFuel!!.spinCtyflagsFuel.adapter = adapter
+                        *//*    val adapter = CustomSpinnerAdapterFuel(this@FuelCalculatorActivity, modelCountryInfos)
+                            bindingFuel!!.spinCtyflagsFuel.adapter = adapter*//*
 
-                         /*   customSpinnerAdapterFuel =
+                         *//*   customSpinnerAdapterFuel =
                                 CustomSpinnerAdapterFuel(applicationContext,modelCountryInfos)
-                           bindingFuel!!.spinCtyflagsFuel.adapter = customSpinnerAdapterFuel*/
+                           bindingFuel!!.spinCtyflagsFuel.adapter = customSpinnerAdapterFuel*//*
                             // fuelPrices(CountName);
-                        }
                     }
                 }
 
-                override fun onFailure(call: Call<ArrayList<AllCountryDataModl?>?>, t: Throwable) {}
+                override fun onFailure(call: Call<ArrayList<AllCountryDataModl?>?>, t: Throwable) {
+                    Log.d("TAG", "onResponse: $t")
+                }
             })
-        }
+        }*/
+
+
     private val onBackPressedCallback: OnBackPressedCallback =
         object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {

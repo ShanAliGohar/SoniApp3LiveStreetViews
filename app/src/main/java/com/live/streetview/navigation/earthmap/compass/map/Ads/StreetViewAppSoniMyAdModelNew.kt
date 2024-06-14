@@ -22,7 +22,8 @@ class StreetViewAppSoniMyAdModelNew {
         next_ads_time: Double, current_counter: Double, app_open_admob_inApp: String?,
         should_show_app_open: Boolean,
         is_splash_show: Boolean, adShowAfter: Int
-    ) {
+    )
+    {
         this.appid_admob_inApp = appid_admob_inApp
         this.banner_admob_inApp = banner_admob_inApp
         this.interstitial_admob_inApp = interstitial_admob_inApp

@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-
-</PreferenceScreen>
+<defaultsMap>
+    <!-- Add other default parameters as needed -->
+    <entry>
+        <key>1</key>
+        <value>2</value>
+    </entry>
+</defaultsMap>

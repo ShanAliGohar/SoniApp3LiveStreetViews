@@ -1,5 +1,6 @@
 package com.live.streetview.navigation.earthmap.compass.map.adapters
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.content.res.Resources.NotFoundException
@@ -9,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.live.streetview.navigation.earthmap.compass.map.Ads.StreetViewAppSoniMyAppAds
@@ -37,11 +39,12 @@ class HorizentalAdapter(
         settingFlags(holder, streetViewModel.textcountryname)
     }
 
+    @SuppressLint("UseCompatLoadingForDrawables")
     private fun settingFlags(holder: ItemViewHolder, textcountryname: String) {
         when (textcountryname) {
             "United States" -> {
                 try {
-                    Glide.with(context).load(context.resources.getDrawable(R.drawable.usa))
+                    Glide.with(context).load(ContextCompat.getDrawable(context,R.drawable.usa))
                         .into(holder.imageStreetview)
                 } catch (e: NotFoundException) {
                     e.printStackTrace()
@@ -58,7 +61,7 @@ class HorizentalAdapter(
 
             "United Kingdom" -> {
                 try {
-                    Glide.with(context).load(context.resources.getDrawable(R.drawable.uk))
+                    Glide.with(context).load(ContextCompat.getDrawable(context,R.drawable.uk))
                         .into(holder.imageStreetview)
                 } catch (e: NotFoundException) {
                     e.printStackTrace()
@@ -75,7 +78,7 @@ class HorizentalAdapter(
 
             "Switzerland" -> {
                 try {
-                    Glide.with(context).load(context.resources.getDrawable(R.drawable.swit))
+                    Glide.with(context).load(ContextCompat.getDrawable(context,R.drawable.swit))
                         .into(holder.imageStreetview)
                 } catch (e: NotFoundException) {
                     e.printStackTrace()
@@ -92,7 +95,7 @@ class HorizentalAdapter(
 
             "Germany" -> {
                 try {
-                    Glide.with(context).load(context.resources.getDrawable(R.drawable.ger))
+                    Glide.with(context).load(ContextCompat.getDrawable(context,R.drawable.ger))
                         .into(holder.imageStreetview)
                 } catch (e: NotFoundException) {
                     e.printStackTrace()
@@ -109,7 +112,7 @@ class HorizentalAdapter(
 
             "France" -> {
                 try {
-                    Glide.with(context).load(context.resources.getDrawable(R.drawable.franceee))
+                    Glide.with(context).load(ContextCompat.getDrawable(context,R.drawable.franceee))
                         .into(holder.imageStreetview)
                 } catch (e: NotFoundException) {
                     e.printStackTrace()
@@ -126,7 +129,7 @@ class HorizentalAdapter(
 
             "Canada" -> {
                 try {
-                    Glide.with(context).load(context.resources.getDrawable(R.drawable.canada))
+                    Glide.with(context).load(ContextCompat.getDrawable(context,R.drawable.canada))
                         .into(holder.imageStreetview)
                 } catch (e: NotFoundException) {
                     e.printStackTrace()
@@ -142,16 +145,17 @@ class HorizentalAdapter(
             }
 
             "Australia" -> {
-                holder.imageStreetview.setImageDrawable(context.resources.getDrawable(R.drawable.aus))
+                Glide.with(context).load(ContextCompat.getDrawable(context,R.drawable.aus))
+                    .into(holder.imageStreetview)
                 try {
-                    Glide.with(context).load(context.resources.getDrawable(R.drawable.aus))
+                    Glide.with(context).load(ContextCompat.getDrawable(context,R.drawable.aus))
                         .into(holder.imageStreetview)
                 } catch (e: NotFoundException) {
                     e.printStackTrace()
                 }
                 holder.itemView.setOnClickListener { view ->
                     try {
-                        Glide.with(context).load(context.resources.getDrawable(R.drawable.aus))
+                        Glide.with(context).load(ContextCompat.getDrawable(context,R.drawable.aus))
                             .into(holder.imageStreetview)
                     } catch (e: NotFoundException) {
                         e.printStackTrace()
@@ -168,7 +172,7 @@ class HorizentalAdapter(
 
             "Turkey" -> {
                 try {
-                    Glide.with(context).load(context.resources.getDrawable(R.drawable.turkey))
+                    Glide.with(context).load(ContextCompat.getDrawable(context,R.drawable.turkey))
                         .into(holder.imageStreetview)
                 } catch (e: NotFoundException) {
                     e.printStackTrace()
@@ -185,7 +189,7 @@ class HorizentalAdapter(
 
             "Norway" -> {
                 try {
-                    Glide.with(context).load(context.resources.getDrawable(R.drawable.norway))
+                    Glide.with(context).load(ContextCompat.getDrawable(context,R.drawable.norway))
                         .into(holder.imageStreetview)
                 } catch (e: NotFoundException) {
                     e.printStackTrace()
@@ -202,7 +206,7 @@ class HorizentalAdapter(
 
             "India" -> {
                 try {
-                    Glide.with(context).load(context.resources.getDrawable(R.drawable.india))
+                    Glide.with(context).load(ContextCompat.getDrawable(context,R.drawable.india))
                         .into(holder.imageStreetview)
                 } catch (e: NotFoundException) {
                     e.printStackTrace()

@@ -14,7 +14,6 @@ import org.osmdroid.tileprovider.MapTileProviderBasic
 import org.osmdroid.tileprovider.tilesource.MapBoxTileSource
 import org.osmdroid.tileprovider.tilesource.OnlineTileSourceBase
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory
-import org.osmdroid.tileprovider.tilesource.bing.BingMapTileSource
 import org.osmdroid.util.GeoPoint
 import org.osmdroid.views.MapView
 import org.osmdroid.views.overlay.Marker
@@ -38,19 +37,7 @@ class OsmHelper {
             mController.animateTo(point, zoom.toDouble(), 4000, 2F, false)
         }
 
-        fun bingMapStyle(mMapView: MapView) {
-            CoroutineScope(Dispatchers.IO).launch() {
-                BingMapTileSource.setBingKey(bingMapApiKey)
-                val bing = BingMapTileSource(null)
-                bing.style = BingMapTileSource.IMAGERYSET_AERIALWITHLABELS
-//            bing.style = BingMapTileSource.IMAGERYSET_AERIAL
-                bing.initMetaData()
-                withContext(Dispatchers.Main) {
-                    mMapView.setTileSource(bing)
 
-                }
-            }
-        }
 
         fun setStdTileProvider(context: Context, mMapView: MapView) {
             if (mMapView.tileProvider !is MapTileProviderBasic) {

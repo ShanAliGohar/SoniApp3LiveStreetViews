@@ -29,6 +29,7 @@
     <color name="compass">#F14545</color>
     <color name="area">#FFC420</color>
     <color name="iso">#63A2FF</color>
+    <color name="light_blue">#BED7FD</color>
     <color name="contryinfo">#95D640</color>
     <color name="altimeter">#20837C</color>
     <color name="drawr_color1">#8993C5</color>
@@ -47,6 +48,16 @@
 
 
     <color name="clrBgFuelManager">#7AF2F2F2</color>
+
+
+
+        <color name="colorPrimary">#3F51B5</color>
+        <color name="colorPrimaryDark">#303F9F</color>
+        <color name="colorAccent">#FF4081</color>
+        <color name="bluee">#0580c7</color>
+        <color name="red">#c7050f</color>
+        <color name="green">#05c749</color>
+        <color name="cyan">#00FFFF</color>
 
 
 </resources>

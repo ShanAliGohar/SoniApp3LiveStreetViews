@@ -7,6 +7,7 @@ import android.location.Location
 import android.location.LocationListener
 import android.os.Bundle
 import android.text.method.ScrollingMovementMethod
+import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.ProgressBar
@@ -31,6 +32,10 @@ import com.live.streetview.navigation.earthmap.compass.map.R
 import com.live.streetview.navigation.earthmap.compass.map.activities.callack.MyLocationCallBack
 import com.live.streetview.navigation.earthmap.compass.map.activities.utils.GPSONOFF
 import com.live.streetview.navigation.earthmap.compass.map.databinding.ActivityAltimeterBinding
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.io.IOException
 import java.text.DecimalFormat
 import java.util.Locale
@@ -135,27 +140,33 @@ class AltimeterActivity : AppCompatActivity(), LocationListener {
         altlat = location.latitude
         altlng = location.longitude
         val altiValue = location.altitude
-        try {
-            val geo = Geocoder(this@AltimeterActivity.applicationContext, Locale.getDefault())
-            val addresses = geo.getFromLocation(altlat, altlng, 4)
 
-            //latituteField.setText("Loading...");
-            if (addresses != null && addresses.size > 0) {
-                val locality = addresses[0].getAddressLine(0)
-                txtcurrentlocalt!!.movementMethod = ScrollingMovementMethod()
-                txtcurrentlocalt!!.text = locality
-                val country = addresses[0].countryName
-                val state = addresses[0].adminArea
-                val sub_admin = addresses[0].subAdminArea
-                val city = addresses[0].featureName
-                val pincode = addresses[0].postalCode
-                val locality_city = addresses[0].locality
-                val sub_localoty = addresses[0].subLocality
-                altitudeWork(altiValue)
-                mylocation!!.onStop()
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+                val geo = Geocoder(this@AltimeterActivity.applicationContext, Locale.getDefault())
+                val addresses = geo.getFromLocation(altlat, altlng, 4)
+
+                withContext(Dispatchers.Main) {
+                    if (addresses != null && addresses.isNotEmpty()) {
+                        val locality = addresses[0].getAddressLine(0)
+                        txtcurrentlocalt?.apply {
+                            movementMethod = ScrollingMovementMethod()
+                            text = locality
+                        }
+                        val country = addresses[0].countryName
+                        val state = addresses[0].adminArea
+                        val subAdmin = addresses[0].subAdminArea
+                        val city = addresses[0].featureName
+                        val pincode = addresses[0].postalCode
+                        val localityCity = addresses[0].locality
+                        val subLocality = addresses[0].subLocality
+                        altitudeWork(altiValue)
+                        mylocation?.onStop()
+                    }
+                }
+            } catch (e: IOException) {
+                Log.e("GeocodingError", "Failed to get address", e)
             }
-        } catch (e: IOException) {
-            e.printStackTrace()
         }
     }
 
