@@ -39,21 +39,23 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".activities.game.TicTacToe"
+            android:name=".activities.game.TicTacHomeActivity"
             android:exported="true" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+    </activity>
+        <activity
+            android:name=".activities.game.TicTacToe"
+            android:exported="true"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
         <activity
             android:name=".activities.OnBoardingScreen"
             android:exported="false" />
         <activity
             android:name=".gdpr.ConsentActivity"
-            android:exported="true"/>
-
+            android:exported="true" />
 
         <receiver
             android:name=".fuelmanager.utils.AlarmReceiver"
