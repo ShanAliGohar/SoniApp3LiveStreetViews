@@ -205,7 +205,7 @@ class TicTacToe : AppCompatActivity() {
             Player1.add(cellId)
             ActivePlayer = 2
             if (setPlayer == 1) {
-                // Re-enable buttons if the game mode is Player vs Player
+                // Keep buttons enabled for Player vs Player mode
                 setButtonsEnabled(true)
             } else {
                 try {
@@ -219,23 +219,24 @@ class TicTacToe : AppCompatActivity() {
             buSelected.setBackgroundColor(Color.TRANSPARENT)
             Player2.add(cellId)
             ActivePlayer = 1
-            // Re-enable buttons if it's the player's turn again
+            // Keep buttons enabled for next player
             setButtonsEnabled(true)
         }
         buSelected.isEnabled = false
         CheckWinner()
     }
     fun setButtonsEnabled(enabled: Boolean) {
-        button1.isEnabled = enabled
-        button2.isEnabled = enabled
-        button3.isEnabled = enabled
-        button4.isEnabled = enabled
-        button5.isEnabled = enabled
-        button6.isEnabled = enabled
-        button7.isEnabled = enabled
-        button8.isEnabled = enabled
-        button9.isEnabled = enabled
+        if (!Player1.contains(1) && !Player2.contains(1)) button1.isEnabled = enabled
+        if (!Player1.contains(2) && !Player2.contains(2)) button2.isEnabled = enabled
+        if (!Player1.contains(3) && !Player2.contains(3)) button3.isEnabled = enabled
+        if (!Player1.contains(4) && !Player2.contains(4)) button4.isEnabled = enabled
+        if (!Player1.contains(5) && !Player2.contains(5)) button5.isEnabled = enabled
+        if (!Player1.contains(6) && !Player2.contains(6)) button6.isEnabled = enabled
+        if (!Player1.contains(7) && !Player2.contains(7)) button7.isEnabled = enabled
+        if (!Player1.contains(8) && !Player2.contains(8)) button8.isEnabled = enabled
+        if (!Player1.contains(9) && !Player2.contains(9)) button9.isEnabled = enabled
     }
+
 
     fun CheckWinner()
     {
@@ -391,7 +392,7 @@ class TicTacToe : AppCompatActivity() {
     }
 
     fun AutoPlay() {
-        // Disable touch input
+        // Disable touch input for all buttons
         setButtonsEnabled(false)
 
         val emptyCells = ArrayList<Int>()
@@ -424,16 +425,16 @@ class TicTacToe : AppCompatActivity() {
             // Add a delay of 2 seconds
             Handler(Looper.getMainLooper()).postDelayed({
                 PlayGame(cellId, buSelect!!)
-                // Re-enable touch input
-                setButtonsEnabled(true)
+                // Keep buttons disabled for next player
+                // Disable the selected button
                 buSelect.isEnabled = false
-
             }, 2000)
         } else {
             // Re-enable touch input if there are no empty cells
             setButtonsEnabled(true)
         }
     }
+
 
 
 }
